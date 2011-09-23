@@ -1,0 +1,141 @@
+<?xml version="1.0"?>
+
+
+<!DOCTYPE rdf:RDF [
+    <!ENTITY owl "http://www.w3.org/2002/07/owl#" >
+    <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
+    <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
+    <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
+    <!ENTITY UserProfile "http://www.dart.zju.edu.cn/ontologies/webservices/UserProfile.owl#" >
+]>
+
+
+<rdf:RDF xmlns="http://www.dart.zju.edu.cn/ontologies/webservices/Concepts.owl#"
+     xml:base="http://www.dart.zju.edu.cn/ontologies/webservices/Concepts.owl"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:UserProfile="http://www.dart.zju.edu.cn/ontologies/webservices/UserProfile.owl#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:owl="http://www.w3.org/2002/07/owl#">
+    <owl:Ontology rdf:about="http://www.dart.zju.edu.cn/ontologies/webservices/Concepts.owl">
+        <owl:imports rdf:resource="http://localhost:8080/mobileMashup/ontologies/UserProfile.owl"/>
+    </owl:Ontology>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.dart.zju.edu.cn/ontologies/webservices/Concepts.owl#Audio -->
+
+    <owl:Class rdf:about="http://www.dart.zju.edu.cn/ontologies/webservices/Concepts.owl#Audio">
+        <rdfs:subClassOf rdf:resource="http://www.dart.zju.edu.cn/ontologies/webservices/Concepts.owl#Media"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.dart.zju.edu.cn/ontologies/webservices/Concepts.owl#Content -->
+
+    <owl:Class rdf:about="http://www.dart.zju.edu.cn/ontologies/webservices/Concepts.owl#Content">
+        <owl:equivalentClass rdf:resource="&UserProfile;Status"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.dart.zju.edu.cn/ontologies/webservices/Concepts.owl#Image -->
+
+    <owl:Class rdf:about="http://www.dart.zju.edu.cn/ontologies/webservices/Concepts.owl#Image">
+        <owl:equivalentClass rdf:resource="http://www.dart.zju.edu.cn/ontologies/webservices/Concepts.owl#Picture"/>
+        <rdfs:subClassOf rdf:resource="http://www.dart.zju.edu.cn/ontologies/webservices/Concepts.owl#Media"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.dart.zju.edu.cn/ontologies/webservices/Concepts.owl#Latitude -->
+
+    <owl:Class rdf:about="http://www.dart.zju.edu.cn/ontologies/webservices/Concepts.owl#Latitude">
+        <rdfs:subClassOf rdf:resource="http://www.dart.zju.edu.cn/ontologies/webservices/Concepts.owl#Location"/>
+        <rdfs:subClassOf rdf:resource="http://www.dart.zju.edu.cn/ontologies/webservices/Concepts.owl#Text"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.dart.zju.edu.cn/ontologies/webservices/Concepts.owl#Location -->
+
+    <owl:Class rdf:about="http://www.dart.zju.edu.cn/ontologies/webservices/Concepts.owl#Location"/>
+    
+
+
+    <!-- http://www.dart.zju.edu.cn/ontologies/webservices/Concepts.owl#Longitude -->
+
+    <owl:Class rdf:about="http://www.dart.zju.edu.cn/ontologies/webservices/Concepts.owl#Longitude">
+        <rdfs:subClassOf rdf:resource="http://www.dart.zju.edu.cn/ontologies/webservices/Concepts.owl#Location"/>
+        <rdfs:subClassOf rdf:resource="http://www.dart.zju.edu.cn/ontologies/webservices/Concepts.owl#Text"/>
+    </owl:Class>
+
+	
+    <!-- http://www.dart.zju.edu.cn/ontologies/webservices/Concepts.owl#Integer -->
+
+    <owl:Class rdf:about="http://www.dart.zju.edu.cn/ontologies/webservices/Concepts.owl#Integer">
+        <rdfs:subClassOf rdf:resource="http://www.dart.zju.edu.cn/ontologies/webservices/Concepts.owl#Text"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.dart.zju.edu.cn/ontologies/webservices/Concepts.owl#Media -->
+
+    <owl:Class rdf:about="http://www.dart.zju.edu.cn/ontologies/webservices/Concepts.owl#Media">
+        <rdfs:subClassOf rdf:resource="http://www.dart.zju.edu.cn/ontologies/webservices/Concepts.owl#Content"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.dart.zju.edu.cn/ontologies/webservices/Concepts.owl#Picture -->
+
+    <owl:Class rdf:about="http://www.dart.zju.edu.cn/ontologies/webservices/Concepts.owl#Picture">
+        <rdfs:subClassOf rdf:resource="http://www.dart.zju.edu.cn/ontologies/webservices/Concepts.owl#Media"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.dart.zju.edu.cn/ontologies/webservices/Concepts.owl#Text -->
+
+    <owl:Class rdf:about="http://www.dart.zju.edu.cn/ontologies/webservices/Concepts.owl#Text">
+        <rdfs:subClassOf rdf:resource="http://www.dart.zju.edu.cn/ontologies/webservices/Concepts.owl#Content"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.dart.zju.edu.cn/ontologies/webservices/Concepts.owl#Url -->
+
+    <owl:Class rdf:about="http://www.dart.zju.edu.cn/ontologies/webservices/Concepts.owl#Url">
+        <rdfs:subClassOf rdf:resource="http://www.dart.zju.edu.cn/ontologies/webservices/Concepts.owl#Text"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.dart.zju.edu.cn/ontologies/webservices/Concepts.owl#Video -->
+
+    <owl:Class rdf:about="http://www.dart.zju.edu.cn/ontologies/webservices/Concepts.owl#Video">
+        <rdfs:subClassOf rdf:resource="http://www.dart.zju.edu.cn/ontologies/webservices/Concepts.owl#Media"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.dart.zju.edu.cn/ontologies/webservices/UserProfile.owl#Status -->
+
+    <owl:Class rdf:about="&UserProfile;Status"/>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 3.1.0.1602) http://owlapi.sourceforge.net -->
+

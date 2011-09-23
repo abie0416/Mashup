@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mashup xmlns="http://www.zju.edu.cn">
+	<variables>
+		<variable name="temp" type="real" value="1" />
+	</variables>
+	<process>
+		<getTerminalInput name="a" label="A" type="real" control="text" value="0" />
+		<getTerminalInput name="b" label="B" type="real" control="text" value="0" />
+		<getTerminalInput name="c" label="C" type="real" control="text" value="0" />
+		<invoke id="invoke1" portType="Math" operation="compare">
+			<inputVariables>
+				<inputVariable type="real" value="${a}" />
+				<inputVariable type="real" value="${b}" />
+			</inputVariables>
+			<outputVariables>
+				<outputVariable name="compareResult" type="string" />
+			</outputVariables>
+		</invoke>
+		<ifBlock id="ifBlock1">
+			<if id="if1">
+				<condition>${invoke1.compareResult}=="bigger"</condition>
+				<assign var="temp" value="${a}" />
+			</if>
+			<elseif id="elseif1">
+				<condition>${invoke1.compareResult}=="smaller"</condition>
+				<assign var="temp" value="${b}" />
+			</elseif>
+			<else id="elseif">
+				<assign var="temp" value="1" />
+			</else>
+		</ifBlock>
+		<while id="while1">
+			<condition>${c}&gt;0</condition>
+			<invoke id="invoke2" portType="Math" operation="multiply">
+				<inputVariables>
+					<inputVariable type="real" value="${c}" />
+					<inputVariable type="real" value="${temp}" />
+				</inputVariables>
+				<outputVariables>
+					<outputVariable name="multiplyResult" type="string" />
+				</outputVariables>
+			</invoke>
+			<assign var="temp" value="${invoke2.multiplyResult}" />
+			<assign var="c" value="${c}-1" />
+		</while>
+	</process>
+</mashup>

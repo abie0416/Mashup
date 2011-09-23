@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<mashup>
+	<inputs>
+		<para name="_COUNT" src="USER.TEXT" />
+	</inputs>
+	<outputs></outputs>
+	<effects></effects>
+	<process>
+		<sequence>
+			<sequence-block>
+				<repeat-while>
+					<whileCondition>?_COUNT > 0</whileCondition>
+					<whileProcess>
+						<sequence>
+							<sequence-block id="service1">
+								<service name="USERINPUT" apiName="USERINPUT">
+									<inputs>
+										<para name="contentText"										
+											src="USER.TEXT" />
+										<para name="TwitterSelected"
+											src="USER.CHECKBOX" />
+										<para name="FacebookSelected"
+											src="USER.CHECKBOX" />
+										<para name="GoogleBuzzSelected"
+											src="USER.CHECKBOX" />
+									</inputs>
+									<outputs>
+										<para name="contentText" />
+										<para name="TwitterSelected" />
+										<para name="FacebookSelected" />
+										<para name="GoogleBuzzSelected" />
+									</outputs>
+									<effects>_COUNT = _COUNT-1</effects>
+								</service>
+
+								<sequence-block id="service2">
+									<if-then-else>
+										<ifCondition>
+											?service1.TwitterSelected ==
+											_TRUE
+										</ifCondition>
+										<then>
+											<service name="UpdateStatus"
+												apiName="Twitter">
+												<inputs>
+													<para name="Status"
+														src="service1.contentText" />
+												</inputs>
+												<outputs></outputs>
+												<effects></effects>
+											</service>
+										</then>
+									</if-then-else>
+								</sequence-block>
+								
+								<sequence-block id="service3">
+									<if-then-else>
+										<ifCondition>
+											?service1.FacebookSelected
+											== _TRUE
+										</ifCondition>
+										<then>
+											<service name="UpdateStatus"
+												apiName="Facebook">
+												<inputs>
+													<para name="Status"
+														src="service1.contentText" />
+												</inputs>
+												<outputs></outputs>
+												<effects></effects>
+											</service>
+										</then>
+									</if-then-else>
+								</sequence-block>
+
+								<sequence-block id="service4">
+									<if-then-else>
+										<ifCondition>
+											?service1.GoogleBuzzSelected== _TRUE
+										</ifCondition>
+										<then>
+											<service name="UpdateStatus"
+												apiName="GoogleBuzz">
+												<inputs>
+													<para name="Status"
+														src="service1.contentText" />
+												</inputs>
+												<outputs></outputs>
+												<effects></effects>
+											</service>
+										</then>
+									</if-then-else>
+								</sequence-block>
+
+							</sequence-block>
+						</sequence>
+					</whileProcess>
+				</repeat-while>
+			</sequence-block>
+		</sequence>
+	</process>
+</mashup>

@@ -1,0 +1,167 @@
+<?xml version="1.0"?>
+
+
+<!DOCTYPE rdf:RDF [
+    <!ENTITY owl "http://www.w3.org/2002/07/owl#" >
+    <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
+    <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
+    <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
+    <!ENTITY Profile "http://www.daml.org/services/owl-s/1.2/Profile.owl#" >
+    <!ENTITY LyricNokiaProfile "http://www.dart.zju.edu.cn/ontologies/webservices/LyricNokiaProfile.owl#" >
+    <!ENTITY LyricNokiaProcess "http://www.dart.zju.edu.cn/ontologies/webservices/LyricNokiaProcess.owl#" >
+]>
+
+
+<rdf:RDF xmlns="http://www.dart.zju.edu.cn/ontologies/webservices/LyricNokiaProfile.owl#"
+     xml:base="http://www.dart.zju.edu.cn/ontologies/webservices/LyricNokiaProfile.owl"
+     xmlns:Profile="http://www.daml.org/services/owl-s/1.2/Profile.owl#"
+     xmlns:LyricNokiaProfile="http://www.dart.zju.edu.cn/ontologies/webservices/LyricNokiaProfile.owl#"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:LyricNokiaProcess="http://www.dart.zju.edu.cn/ontologies/webservices/LyricNokiaProcess.owl#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:owl="http://www.w3.org/2002/07/owl#">
+    <owl:Ontology rdf:about="http://www.dart.zju.edu.cn/ontologies/webservices/LyricNokiaProfile.owl">
+        <owl:imports rdf:resource="http://localhost:8080/mobileMashup/ontologies/LyricNokiaProcess.owl"/>
+        <owl:imports rdf:resource="http://localhost:8080/mobileMashup/ontologies/Profile.owl"/>
+    </owl:Ontology>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.daml.org/services/owl-s/1.2/Profile.owl#hasInput -->
+
+    <owl:ObjectProperty rdf:about="&Profile;hasInput"/>
+    
+
+
+    <!-- http://www.daml.org/services/owl-s/1.2/Profile.owl#hasOutput -->
+
+    <owl:ObjectProperty rdf:about="&Profile;hasOutput"/>
+    
+
+
+    <!-- http://www.daml.org/services/owl-s/1.2/Profile.owl#has_process -->
+
+    <owl:ObjectProperty rdf:about="&Profile;has_process"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Data properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.daml.org/services/owl-s/1.2/Profile.owl#serviceName -->
+
+    <owl:DatatypeProperty rdf:about="&Profile;serviceName"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.daml.org/services/owl-s/1.2/Profile.owl#Profile -->
+
+    <owl:Class rdf:about="&Profile;Profile"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Individuals
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.dart.zju.edu.cn/ontologies/webservices/LyricNokiaProcess.owl#getLyricProcess -->
+
+    <owl:NamedIndividual rdf:about="&LyricNokiaProcess;getLyricProcess"/>
+    
+
+
+    <!-- http://www.dart.zju.edu.cn/ontologies/webservices/LyricNokiaProcess.owl#artist -->
+
+    <owl:NamedIndividual rdf:about="&LyricNokiaProcess;artist"/>
+    
+
+
+    <!-- http://www.dart.zju.edu.cn/ontologies/webservices/LyricNokiaProcess.owl#artistO -->
+
+    <owl:NamedIndividual rdf:about="&LyricNokiaProcess;artistO"/>
+    
+
+
+    <!-- http://www.dart.zju.edu.cn/ontologies/webservices/LyricNokiaProcess.owl#track -->
+
+    <owl:NamedIndividual rdf:about="&LyricNokiaProcess;track"/>
+    
+
+
+    <!-- http://www.dart.zju.edu.cn/ontologies/webservices/LyricNokiaProcess.owl#trackO -->
+
+    <owl:NamedIndividual rdf:about="&LyricNokiaProcess;trackO"/>
+    
+
+    
+
+
+    <!-- http://www.dart.zju.edu.cn/ontologies/webservices/LyricNokiaProcess.owl#lyrics -->
+
+    <owl:NamedIndividual rdf:about="&LyricNokiaProcess;lyrics"/>
+    
+
+
+    <!-- http://www.dart.zju.edu.cn/ontologies/webservices/LyricNokiaProcess.owl#album -->
+
+    <owl:NamedIndividual rdf:about="&LyricNokiaProcess;album"/>
+    
+
+
+    <!-- http://www.dart.zju.edu.cn/ontologies/webservices/LyricNokiaProfile.owl#getLyricProfile -->
+
+    <owl:NamedIndividual rdf:about="&LyricNokiaProfile;getLyricProfile">
+        <rdf:type rdf:resource="&Profile;Profile"/>
+        <Profile:serviceName>LyricNokia_getLyric</Profile:serviceName>
+        <Profile:has_process rdf:resource="&LyricNokiaProcess;getLyricProcess"/>
+        <Profile:hasInput rdf:resource="&LyricNokiaProcess;artist"/>
+        <Profile:hasOutput rdf:resource="&LyricNokiaProcess;artistO"/>
+        <Profile:hasInput rdf:resource="&LyricNokiaProcess;track"/>
+        <Profile:hasOutput rdf:resource="&LyricNokiaProcess;trackO"/>
+        <Profile:hasOutput rdf:resource="&LyricNokiaProcess;lyrics"/>
+        <Profile:hasOutput rdf:resource="&LyricNokiaProcess;album"/>
+    </owl:NamedIndividual>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 3.1.0.1602) http://owlapi.sourceforge.net -->
+

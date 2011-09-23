@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+			xmlns="http://www.zju.edu.cn"
+			targetNamespace="http://www.zju.edu.cn"
+			elementFormDefault="qualified"
+			attributeFormDefault="unqualified">
+	<xs:simpleType name="dataType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="real"/>
+			<xs:enumeration value="boolean"/>
+			<xs:enumeration value="string"/>
+			<xs:enumeration value="int"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="controlType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="text"/>
+			<xs:enumeration value="checkbox"/>
+			<xs:enumeration value="popButton"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:element name="variable">
+		<xs:complexType>
+			<xs:attribute name="name" type="xs:string" use="required"/>
+			<xs:attribute name="type" type="dataType" use="required"/>
+			<xs:attribute name="value" type="xs:string" use="required"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="assign">
+		<xs:complexType>
+			<xs:attribute name="var" type="xs:string" use="required"/>
+			<xs:attribute name="value" type="xs:string" use="required"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="getTerminalInput">
+		<xs:complexType>
+			<xs:attribute name="name" type="xs:string" use="required"/>
+			<xs:attribute name="label" type="xs:string" use="required"/>
+			<xs:attribute name="type" type="dataType" use="required"/>
+			<xs:attribute name="control" type="controlType" use="required"/>
+			<xs:attribute name="value" type="xs:string" use="required"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="inputVariables">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="inputVariable" minOccurs="0" maxOccurs="unbounded">
+					<xs:complexType>
+						<xs:attribute name="name" type="xs:string" use="required"/>
+						<xs:attribute name="type" type="dataType" use="required"/>
+						<xs:attribute name="value" type="xs:string" use="required"/>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="outputVariables">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="outputVariable" minOccurs="0" maxOccurs="unbounded">
+					<xs:complexType>
+						<xs:attribute name="name" type="xs:string"/>
+						<xs:attribute name="type" type="dataType"/>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="invoke">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="inputVariables"/>
+				<xs:element ref="outputVariables"/>
+			</xs:sequence>
+			<xs:attribute name="id" type="xs:string" use="required"/>
+			<xs:attribute name="portType" type="xs:string" use="required"/>
+			<xs:attribute name="operation" type="xs:string" use="required"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="while">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="condition" type="xs:string"/>
+				<xs:choice minOccurs="0" maxOccurs="unbounded">
+					<xs:element ref="getTerminalInput"/>
+					<xs:element ref="assign"/>
+					<xs:element ref="invoke"/>
+					<xs:element ref="while"/>
+					<xs:element ref="ifBlock"/>
+				</xs:choice>
+			</xs:sequence>
+			<xs:attribute name="id" type="xs:string" use="required"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="if">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="condition" type="xs:string"/>
+				<xs:choice minOccurs="0" maxOccurs="unbounded">
+					<xs:element ref="getTerminalInput"/>
+					<xs:element ref="assign"/>
+					<xs:element ref="invoke"/>
+					<xs:element ref="while"/>
+					<xs:element ref="ifBlock"/>
+				</xs:choice>
+			</xs:sequence>
+			<xs:attribute name="id" type="xs:string" use="required"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="elseif">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="condition" type="xs:string"/>
+				<xs:choice minOccurs="0" maxOccurs="unbounded">
+					<xs:element ref="getTerminalInput"/>
+					<xs:element ref="assign"/>
+					<xs:element ref="invoke"/>
+					<xs:element ref="while"/>
+					<xs:element ref="ifBlock"/>
+				</xs:choice>
+			</xs:sequence>
+			<xs:attribute name="id" type="xs:string" use="required"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="else">
+		<xs:complexType>
+			<xs:choice minOccurs="0" maxOccurs="unbounded">
+				<xs:element ref="getTerminalInput"/>
+				<xs:element ref="assign"/>
+				<xs:element ref="invoke"/>
+				<xs:element ref="while"/>
+				<xs:element ref="ifBlock"/>
+			</xs:choice>
+			<xs:attribute name="id" type="xs:string" use="required"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="ifBlock">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="if"/>
+				<xs:element ref="elseif" minOccurs="0" maxOccurs="unbounded"/>
+				<xs:element ref="else" minOccurs="0"/>
+			</xs:sequence>
+			<xs:attribute name="id" type="xs:string" use="required"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="variables">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="variable" minOccurs="0" maxOccurs="unbounded"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="process">
+		<xs:complexType>
+			<xs:choice minOccurs="0" maxOccurs="unbounded">
+				<xs:element ref="getTerminalInput"/>
+				<xs:element ref="assign"/>
+				<xs:element ref="invoke"/>
+				<xs:element ref="while"/>
+				<xs:element ref="ifBlock"/>
+			</xs:choice>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="mashup">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="variables"/>
+				<xs:element ref="process"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<mx:Canvas xmlns:mx="http://www.adobe.com/2006/mxml" 
+    xmlns:tileView="tileView.*" 
+    width="100%" height="100%" horizontalCenter="true"
+    >
+    <mx:Metadata>
+    [Event(name="addTile", type="dart.mashup.tile.TileListEvent")]
+    </mx:Metadata>
+    
+    <mx:Script>
+        <![CDATA[
+        	import dart.mashup.tile.TileListEvent;
+        	import dart.mashup.tile.Tile;
+        	import dart.mashup.ontology.Attribute;
+        	import dart.mashup.ontology.Ontology;
+        	import mx.controls.Alert;
+        import mx.collections.ArrayCollection;
+                
+        private var _tileCatalog:ArrayCollection;
+        private var _classArr:Array ;
+        [Bindable]
+        public function get classArr():Array
+        {
+            return _classArr;
+        }
+        
+        public function set classArr(c:Array):void
+        {
+            _classArr = c;
+        //    if(_classArr == null)
+        //   	Alert.show("fdas");
+        }          
+        [Bindable]
+        public function get tileCatalog():ArrayCollection
+        {
+            return _tileCatalog;
+        }
+        
+        public function set tileCatalog(c:ArrayCollection):void
+        {
+            _tileCatalog = c;
+         /*   if (editorPanel != null)
+            {
+                editorPanel.filter.count = c.length;
+            }
+         */
+        } 
+        
+        public function addTileToCatalog(t:Tile):void
+        {
+        	var e:TileListEvent = new TileListEvent(TileListEvent.ADD_TILE);
+        	e.tile = t;
+        	dispatchEvent(e);
+        }
+        
+             
+ 
+        ]]>
+    </mx:Script>
+     <mx:HBox x="{this.width / 2 - 495}"
+        styleName="colorPanel"
+        dropShadowEnabled="true" 
+        height="550" width="990" 
+        verticalScrollPolicy="off" 
+        horizontalGap="0" horizontalAlign="center">
+		<mx:VBox width="265" height="100%">
+    		<mx:ApplicationControlBar width="262" height="29">
+	        	<mx:Label text="Search:" />
+	        	<mx:TextInput width="137"  height="20"/>
+	        	<mx:Spacer width="100%" />
+	        	<mx:Button label="Go" styleName="glass" click="Alert.show('not implemented')"/>
+    		</mx:ApplicationControlBar>
+	   		<tileView:TileCatalogPanel id="tileCatalogPanel" width="265" height="506" tileCatalog="{tileCatalog}"/>
+	   </mx:VBox>
+	   <mx:Spacer width="8"/>
+	   <tileView:TileEditorPanel id="tileEditorPanel" width="710" height="540" classArr="{classArr}" addTile="addTileToCatalog(event.tile)"/>
+	   
+	 
+    </mx:HBox>
+ 
+        
+</mx:Canvas>

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<mx:HBox xmlns:mx="http://www.adobe.com/2006/mxml" 
+    verticalAlign="middle" 
+    paddingTop="0" 
+    paddingBottom="0"
+    horizontalScrollPolicy="off"
+	currentState="showEditor">
+    <mx:Script>
+        <![CDATA[
+            [Bindable]
+            public var classCount:int;
+            
+            private function rollOverLabel(event:Event):void
+            {
+                Label(event.target).setStyle("styleName", "catalogTitleButtonHighlighted");
+            }
+            
+            private function rollOutLabel(event:Event):void
+            {
+                Label(event.target).setStyle("styleName", "catalogTitleButtonDeselected");
+            }
+        ]]>
+    </mx:Script>
+    
+    <mx:Spacer width="100%" />
+    <mx:Label id="editClass" text="Edit Class" click="currentState = 'showEditor'"/>
+    <mx:VRule height="{editClass.height * .75}" themeColor="#333333" alpha=".75"/>
+    <mx:Label id="viewSelectedClass" text="View Selected Class ({classCount} items)" click="currentState = 'showSelectedList'"/>
+    
+    <mx:states>
+        <mx:State name="showEditor">
+            <mx:SetStyle target="{editClass}" name="styleName" value="catalogTitleButtonSelected" />
+            <mx:SetStyle target="{viewSelectedClass}" name="styleName" value="catalogTitleButtonDeselected" />
+            <mx:SetEventHandler target="{viewSelectedClass}" name="rollOver" handlerFunction="rollOverLabel" />
+            <mx:SetEventHandler target="{viewSelectedClass}" name="rollOut" handlerFunction="rollOutLabel" />
+        </mx:State>
+        <mx:State name="showSelectedList">
+            <mx:SetStyle target="{viewSelectedClass}" name="styleName" value="catalogTitleButtonSelected" />            
+            <mx:SetStyle target="{editClass}" name="styleName" value="catalogTitleButtonDeselected" />
+            <mx:SetEventHandler target="{editClass}" name="rollOver" handlerFunction="rollOverLabel" />
+            <mx:SetEventHandler target="{editClass}" name="rollOut" handlerFunction="rollOutLabel" />
+        </mx:State>
+    </mx:states>
+</mx:HBox>

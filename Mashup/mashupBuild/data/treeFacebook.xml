@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<concept name="api.FaceBook">
+    <instance name="api.FaceBooks"/>
+    <concept name="api.MicroBlog">
+      <instance name="api.GoogleBuzz"/>
+      <instance name="api.SinaMicroBlog"/>
+    </concept>
+  </concept>
+

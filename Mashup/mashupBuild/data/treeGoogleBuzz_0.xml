@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<concept name="api.GoogleBuzz_0">
+    <instance name="api.GoogleBuzzs"/>
+    <concept name="api.MicroBlog">
+      <instance name="api.Twitter"/>
+      <instance name="api.SinaMicroBlog"/>
+    </concept>
+  </concept>

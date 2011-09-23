@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?> 
+<concept name="api.tempRoot">
+  <instance name="api.Facebook" /> 
+  <concept name="api.MicroBlog">
+  <instance name="api.GoogleBuzz" /> 
+  <concept name="api.Twitter">
+  	<instance name= "api.yueyue"/>
+  	</concept> 
+  <instance name="api.SinaMicroBlog" /> 
+  </concept> 
+</concept>

@@ -1,0 +1,101 @@
+<Graph>
+  <Node name="0"  />
+  <Node name="A"  />
+  <Node name="B"  />
+  <Node name="C"  />
+  <Node name="D"  />
+  <Node name="E"  />
+  <Node name="F"  />
+  
+  <Node name="A.1"  />
+  <Node name="A.2"  />
+  <Node  name="A.3" />
+  <Node  name="A.4" />
+  <Node  name="A.5" />
+  <Node  name="A.6" />
+                                                 
+  <Node  name="B.1"  />
+  <Node  name="B.2"  />
+  <Node  name="B.3"  />
+  <Node  name="B.4"  />
+  <Node  name="B.5"  />
+  <Node  name="B.6"  />
+                     
+  <Node  name="C.1"  />
+  <Node  name="C.2"  />
+  <Node  name="C.3"  />
+  <Node  name="C.4"  />
+  <Node  name="C.5"  />
+  <Node  name="C.6"  />
+
+  <Node  name="D.1"  />
+  <Node  name="D.2"  />
+  <Node  name="D.3"  />
+  <Node  name="D.4"  />
+  <Node  name="D.5"  />
+  <Node  name="D.6"  />
+
+  <Node  name="E.1"  />
+  <Node  name="E.2"  />
+  <Node  name="E.3"  />
+  <Node  name="E.4"  />
+  <Node  name="E.5"  />
+  <Node  name="E.6"  />
+
+  <Node  name="F.1"  />
+  <Node  name="F.2"  />
+  <Node  name="F.3"  />
+  <Node  name="F.4"  />
+  <Node  name="F.5"  />
+  <Node  name="F.6"  />
+  
+  <Edge fromID="1" toID="2"   />
+  <Edge fromID="1" toID="3"  />
+  <Edge fromID="1" toID="4"  />
+  <Edge fromID="1" toID="5"   />
+  <Edge fromID="1" toID="6"  />
+  <Edge fromID="1" toID="7"  />
+  
+  <Edge fromID="2" toID="8" />
+  <Edge fromID="2" toID="9"  />
+  <Edge fromID="2" toID="10"   />
+  <Edge fromID="2" toID="11"   />
+  <Edge fromID="2" toID="12"  />
+  <Edge fromID="2" toID="13"  />
+
+  <Edge fromID="3" toID="14"  />
+  <Edge fromID="3" toID="15"   />
+  <Edge fromID="3" toID="16" />
+  <Edge fromID="3" toID="17"  />
+  <Edge fromID="3" toID="18"  />
+  <Edge fromID="3" toID="19" />
+
+  <Edge fromID="4" toID="20"/>
+  <Edge fromID="4" toID="21"   />
+  <Edge fromID="4" toID="22"  />
+  <Edge fromID="4" toID="23" />
+  <Edge fromID="4" toID="24" />
+  <Edge fromID="4" toID="25"  />
+
+  <Edge fromID="5" toID="26"/>
+  <Edge fromID="5" toID="27"   />
+  <Edge fromID="5" toID="28"  />
+  <Edge fromID="5" toID="29"  />
+  <Edge fromID="5" toID="30"  />
+  <Edge fromID="5" toID="31"  />
+
+  <Edge fromID="6" toID="32"  />
+  <Edge fromID="6" toID="33"  />
+  <Edge fromID="6" toID="34"  />
+  <Edge fromID="6" toID="35" />
+  <Edge fromID="6" toID="36"  />
+  <Edge fromID="6" toID="37"   />
+
+  <Edge fromID="7" toID="38"  />
+  <Edge fromID="7" toID="39" />
+  <Edge fromID="7" toID="40"   />
+  <Edge fromID="7" toID="41"  />
+  <Edge fromID="7" toID="42"  />
+  <Edge fromID="7" toID="43"  />
+  
+</Graph>

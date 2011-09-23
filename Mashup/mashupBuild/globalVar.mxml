@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:TitleWindow xmlns:mx="http://www.adobe.com/2006/mxml"  width="800" height="400" backgroundColor="white"
+	title="Add Variable..." 
+		verticalAlign="middle" horizontalAlign="center" 
+		borderColor="#333333" paddingBottom="5" horizontalGap="5">
+<mx:Metadata>
+	[Event(name="saveGlobalVar", type = "flash.events.Event")]
+	[Event(name="cancelGlobalVar", type = "flash.events.Event")]
+</mx:Metadata>
+<mx:Script>
+	<![CDATA[
+		
+				private function SaveMe():void{
+					dispatchEvent(new Event("saveGlobalVar"));
+//					closeMe();
+				}
+				private  function closeMe():void{
+					trace ("closeMe")
+					dispatchEvent(new Event("cancelGlobalVar"));
+					
+				}
+	]]>
+</mx:Script>
+	<mx:VBox width="100%" height="100%" verticalAlign="middle" horizontalAlign="center">
+			<mx:HBox width="100%" height="80%" verticalAlign="middle" horizontalAlign="center">
+				<mx:VBox  width="40%" height="100%" verticalAlign="top" horizontalAlign="center" borderColor="black">
+					  <mx:Label text="GlobalVariable" textAlign="center" width="100%" height="10%"/>
+					  <mx:VBox id="existingVar" width="100%" height="90%"  verticalAlign="top" horizontalAlign="center" borderColor="black">
+					  	
+					  </mx:VBox>
+				</mx:VBox>
+				<mx:HBox  width="60%" height="100%" verticalAlign="top" horizontalAlign="center">
+					<mx:VBox  width="25%" height="100%" verticalAlign="top" horizontalAlign="center">
+						<mx:Label text="Variable" width="100%" height="10%"  textAlign="center"/>
+						<mx:VBox id="addVar" width="100%" height="90%" verticalAlign="top" horizontalAlign="center"/>
+					</mx:VBox>
+					<mx:VBox width="20%" height="100%"  verticalAlign="top" horizontalAlign="center">
+						<mx:Label text="Type" width="100%" height="10%" textAlign="center"/>
+						<mx:VBox id="typeVar" width="100%" height="90%" verticalAlign="top" horizontalAlign="center"/>
+						</mx:VBox>
+					<mx:VBox width="25%" height=" 100%" verticalAlign="top" horizontalAlign="center">
+						<mx:Label text="Initial" width="100%" height="10%"  textAlign="center"/>
+						<mx:VBox id="initVar" width="100%" height="90%" verticalAlign="top" horizontalAlign="center"/>
+						</mx:VBox>
+					<mx:VBox width="20%" height="100%" verticalAlign="top" horizontalAlign="center">
+						<mx:Label text="Target Service" width="100%" height="10%" textAlign="center"/>
+						<mx:VBox id="targetService" width="100%" height="90%" verticalAlign="top" horizontalAlign="center"/>
+					</mx:VBox>
+					<mx:VBox width="10%" height="100%" verticalAlign="top" horizontalAlign="center">
+						<mx:Label text="Add" width="100%" height="10%" textAlign="center"/>
+						<mx:VBox id="addLabel" width="100%" height="90%" verticalAlign="top" horizontalAlign="center"/>
+					</mx:VBox>
+				</mx:HBox>
+			</mx:HBox>
+			<mx:HBox width="100%" height="20%" verticalAlign="middle" horizontalAlign="center">
+						<mx:Button label="Save" click="SaveMe()"/>
+						<mx:Button label="Cancel" click="closeMe()"/>
+			</mx:HBox>
+	</mx:VBox>
+
+</mx:TitleWindow>

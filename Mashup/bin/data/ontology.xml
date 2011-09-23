@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+ 
+<catalog>
+    <ontology ontologyId="1">
+		<author>robin</author>
+		<email>robinlu1984@gmail.com</email>
+        <name>GEO</name>
+        <description>geographic coordinates of a location</description>
+        <attributes>
+        	<attribute>
+				<name>latitude</name>
+				<desc>latitude of a location</desc>
+			</attribute>
+        	<attribute>
+				<name>longitude</name>
+				<desc>longitude of a location</desc>
+			</attribute>
+        </attributes>
+        <image>assets/classIcon/class.png</image>
+    </ontology>
+    <ontology ontologyId="2">
+		<author>robin</author>
+		<email>robinlu1984@gmail.com</email>
+        <name>GEO</name>
+        <description>geographic coordinates of a location</description>
+        <attributes>
+        	<attribute>
+				<name>latitude</name>
+				<desc>latitude of a location</desc>
+			</attribute>
+        	<attribute>
+				<name>longitude</name>
+				<desc>longitude of a location</desc>
+			</attribute>
+        </attributes>
+        <image>assets/classIcon/class.png</image>
+    </ontology>
+</catalog>

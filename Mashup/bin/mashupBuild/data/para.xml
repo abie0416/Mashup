@@ -1,0 +1,26 @@
+<result>
+	<service>
+		<matches>
+			<para2 name="name" type="TYPE1" >
+				<defaultValue>hello world name</defaultValue>
+				<para1 name="haohao1" semantic="hao1"/>
+				<para1 name="henhao2" semantic="hao2"/>
+			</para2>
+			<para2 name="id" type="TYPE2" >
+				<defaultValue>hello world id</defaultValue>
+				<para1 name="number1" semantic="num1"/>
+				<para1 name="number2" semantic="num2"/>
+			</para2>
+			<para2 name="node" type="TYPE3">
+				<defaultValue>hello world node</defaultValue>
+				<para1 name="node1"  semantic="n01"/>
+				<para1 name="node2" semantic="n02"/>
+			</para2>			
+		</matches>
+		<outputs>
+				<para3 name="rrrr"/>
+				<para3 name= "xxxx"/>
+				<para3 name="yyyy"/>
+		</outputs>		 
+	</service>
+</result>

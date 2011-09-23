@@ -1,0 +1,137 @@
+<?xml version="1.0"?>
+
+
+<!DOCTYPE rdf:RDF [
+    <!ENTITY owl "http://www.w3.org/2002/07/owl#" >
+    <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
+    <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
+    <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
+    <!ENTITY Service "http://www.daml.org/services/owl-s/1.2/Service.owl#" >
+    <!ENTITY ApiClass "http://www.dart.zju.edu.cn/ontologies/webservices/ApiClass.owl#" >
+    <!ENTITY BandsintownProfile "http://www.dart.zju.edu.cn/ontologies/webservices/BandsintownProfile.owl#" >
+    <!ENTITY BandsintownProcess "http://www.dart.zju.edu.cn/ontologies/webservices/BandsintownProcess.owl#" >
+]>
+
+
+<rdf:RDF xmlns="http://www.dart.zju.edu.cn/ontologies/webservices/BandsintownService.owl#"
+     xml:base="http://www.dart.zju.edu.cn/ontologies/webservices/BandsintownService.owl"
+     xmlns:Service="http://www.daml.org/services/owl-s/1.2/Service.owl#"
+     xmlns:BandsintownProfile="http://www.dart.zju.edu.cn/ontologies/webservices/BandsintownProfile.owl#"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:BandsintownProcess="http://www.dart.zju.edu.cn/ontologies/webservices/BandsintownProcess.owl#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:ApiClass="http://www.dart.zju.edu.cn/ontologies/webservices/ApiClass.owl#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:owl="http://www.w3.org/2002/07/owl#">
+    <owl:Ontology rdf:about="http://www.dart.zju.edu.cn/ontologies/webservices/BandsintownService.owl">
+        <owl:imports rdf:resource="http://localhost:8080/mobileMashup/ontologies/ApiClass.owl"/>
+        <owl:imports rdf:resource="http://localhost:8080/mobileMashup/ontologies/BandsintownProcess.owl"/>
+        <owl:imports rdf:resource="http://localhost:8080/mobileMashup/ontologies/BandsintownProfile.owl"/>
+    </owl:Ontology>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.daml.org/services/owl-s/1.2/Service.owl#describedBy -->
+
+    <owl:ObjectProperty rdf:about="&Service;describedBy"/>
+    
+
+
+    <!-- http://www.daml.org/services/owl-s/1.2/Service.owl#presents -->
+
+    <owl:ObjectProperty rdf:about="&Service;presents"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.daml.org/services/owl-s/1.2/Service.owl#Service -->
+
+    <owl:Class rdf:about="&Service;Service"/>
+    
+
+
+    <!-- http://www.dart.zju.edu.cn/ontologies/webservices/ApiClass.owl#EntertainmentApi -->
+
+    <owl:Class rdf:about="&ApiClass;EntertainmentApi"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Individuals
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.dart.zju.edu.cn/ontologies/webservices/BandsintownProcess.owl#getLocationEventsProcess -->
+
+    <owl:NamedIndividual rdf:about="&BandsintownProcess;getLocationEventsProcess"/>
+    
+
+
+    <!-- http://www.dart.zju.edu.cn/ontologies/webservices/BandsintownProfile.owl#getLocationEventsProfile -->
+
+    <owl:NamedIndividual rdf:about="&BandsintownProfile;getLocationEventsProfile"/>
+    
+
+
+    <!-- http://www.dart.zju.edu.cn/ontologies/webservices/BandsintownService.owl#getLocationEventsService -->
+
+    <owl:NamedIndividual rdf:about="http://www.dart.zju.edu.cn/ontologies/webservices/BandsintownService.owl#getLocationEventsService">
+        <rdf:type rdf:resource="&Service;Service"/>
+        <rdf:type rdf:resource="&ApiClass;EntertainmentApi"/>
+        <Service:describedBy rdf:resource="&BandsintownProcess;getLocationEventsProcess"/>
+        <Service:presents rdf:resource="&BandsintownProfile;getLocationEventsProfile"/>
+    </owl:NamedIndividual>
+
+    <!-- http://www.dart.zju.edu.cn/ontologies/webservices/BandsintownProcess.owl#getArtistEventsProcess -->
+
+    <owl:NamedIndividual rdf:about="&BandsintownProcess;getArtistEventsProcess"/>
+    
+
+
+    <!-- http://www.dart.zju.edu.cn/ontologies/webservices/BandsintownProfile.owl#getArtistEventsProfile -->
+
+    <owl:NamedIndividual rdf:about="&BandsintownProfile;getArtistEventsProfile"/>
+    
+
+
+    <!-- http://www.dart.zju.edu.cn/ontologies/webservices/BandsintownService.owl#getArtistEventsService -->
+
+    <owl:NamedIndividual rdf:about="http://www.dart.zju.edu.cn/ontologies/webservices/BandsintownService.owl#getArtistEventsService">
+        <rdf:type rdf:resource="&Service;Service"/>
+        <rdf:type rdf:resource="&ApiClass;EntertainmentApi"/>
+        <Service:describedBy rdf:resource="&BandsintownProcess;getArtistEventsProcess"/>
+        <Service:presents rdf:resource="&BandsintownProfile;getArtistEventsProfile"/>
+    </owl:NamedIndividual>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 3.1.0.20069) http://owlapi.sourceforge.net -->
+

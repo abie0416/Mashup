@@ -1,0 +1,34 @@
+<ontology ontologyId="9">
+<author>robin</author>
+<email>lb@zju.edu.cn</email>
+<name>Object</name>
+<description>This is the parent class for all the classes</description>
+<attributes>
+<attribute>
+<name>title</name>
+<desc>A short strring that describes the object</desc>
+</attribute>
+<attribute>
+<name>url</name>
+<desc>for describe url</desc>
+</attribute>
+<attribute>
+<name>color</name>
+<desc>a hex value color</desc>
+</attribute>
+<attribute>
+<name>description</name>
+<desc>a description of the object</desc>
+</attribute>
+<attribute>
+<name>ipAddress</name>
+<desc>an ip address</desc>
+</attribute>
+<attribute>
+<name>name</name>
+<desc>the name of something</desc>
+</attribute>
+
+</attributes>
+<image>assets/classIcon/class.png</image>
+</ontology>

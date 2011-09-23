@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="src" path="test"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="con" path="melibrary.com.genuitec.eclipse.j2eedt.core.MYECLIPSE_JAVAEE_5_CONTAINER"/>
+	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/aterm-java-1.6.jar"/>
+	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/junit-4.8.1.jar"/>
+	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/junit-dep-4.8.1.jar"/>
+	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/log4j-1.2.15.jar"/>
+	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/owlapi-bin.jar"/>
+	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/owlapi-src.jar"/>
+	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/pellet-cli.jar"/>
+	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/pellet-core.jar"/>
+	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/pellet-datatypes.jar"/>
+	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/pellet-dig.jar"/>
+	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/pellet-el.jar"/>
+	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/pellet-explanation.jar"/>
+	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/pellet-modularity.jar"/>
+	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/pellet-owlapiv3.jar"/>
+	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/pellet-pellint.jar"/>
+	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/pellet-query.jar"/>
+	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/pellet-rules.jar"/>
+	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/servlet-api.jar"/>
+	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/dom4j-2.0.0-ALPHA-2.jar"/>
+	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/pellet-core-src.jar"/>
+	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/jgrapht-jdk1.5.jar"/>
+	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/json.jar"/>
+	<classpathentry kind="output" path="WebRoot/WEB-INF/classes"/>
+</classpath>

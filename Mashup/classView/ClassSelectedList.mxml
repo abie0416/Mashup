@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<mx:VBox xmlns:mx="http://www.adobe.com/2006/mxml" 
+    xmlns:classView="classView.*"
+    horizontalAlign="right"
+    paddingTop="8"
+    paddingBottom="8"
+    paddingRight="4"
+    paddingLeft="4"
+    horizontalScrollPolicy="off"
+    verticalScrollPolicy="off">
+    
+    <mx:Script>
+        <![CDATA[
+        
+        import mx.controls.Alert;
+        
+        import dart.mashup.ontology.Ontology;
+        import dart.mashup.ontology.ClassListEvent;
+        
+        [Bindable]
+        public var numClasses:int=0;
+        
+        [Bindable]
+        private var total:Number = 0;
+
+        private const SHIPPING:Number = 1.99;
+        
+        private function classListEventHandler(event:ClassListEvent):void
+        {
+            switch (event.type)
+            {
+                case ClassListEvent.ADD_CLASS:
+	                event.ontology.qty = 1;
+	                numClasses++;
+	                break;
+                case ClassListEvent.REMOVE_CLASS:
+                    var items:Array = classList.items;
+                    total = 0; 
+                    numClasses = 0;
+                    for (var i:int=0; i < items.length; i++)
+                    {
+                        var ontology:Ontology = items[i].ontology;
+                        numClasses += ontology.qty;
+                    }       
+                    break;
+                default:
+                    break;
+            }
+        }
+        
+        ]]>
+    </mx:Script>
+    
+    <mx:Label width="100%" text="Your Selected Class" styleName="sectionHeader"/>
+        
+    <classView:ClassList id="classList" height="100%" width="100%"
+        newItemStartX="-100" newItemStartY="-100" 
+        addClass="classListEventHandler(event)"
+        removeClass = "classListEventHandler(event)"
+        />
+
+
+    <mx:Button label="Submit"  click="Alert.show('This feature is not implemented', 'Submit')"/>
+
+</mx:VBox>

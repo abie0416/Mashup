@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:HBox xmlns:mx="http://www.adobe.com/2006/mxml" width="100%" height="100%" horizontalAlign="center" xmlns:appSource="appSource.*" verticalAlign="middle">
+	<mx:Canvas id="previewCanvas" width="320" height="480" backgroundColor="white" borderStyle="solid" borderColor="green" borderThickness="2">
+		<mx:Image source="assets/appHeader.jpg" width="100%" />
+	</mx:Canvas>
+</mx:HBox>

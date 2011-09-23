@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<mx:VBox xmlns:mx="http://www.adobe.com/2006/mxml" 
+    xmlns:classView="classView.*"
+    xmlns:mashup="dart.mashup.ontology.*"
+    height="100%" 
+    paddingLeft="4" 
+    paddingRight="12" 
+    paddingTop="12" 
+    paddingBottom="8" 
+    verticalGap="0"
+    currentState="showingThumbnails">
+    
+    <mx:Metadata>
+       [Event(name="filter", type="dart.mashup.ontology.ClassFilterEvent")] 
+       [Event(name="addClass", type="dart.mashup.ontology.ClassListEvent")]
+    </mx:Metadata>
+    
+    <mx:Script>
+        <![CDATA[
+        	import dart.mashup.ontology.ClassListEvent;
+        import mx.collections.ArrayCollection;
+        import dart.mashup.ontology.Ontology;
+        import mx.rpc.events.FaultEvent;
+        import mx.rpc.events.ResultEvent;
+        import mx.rpc.http.HTTPService;
+        import dart.mashup.ontology.Attribute;
+        import mx.controls.sliderClasses.Slider;
+        import mx.controls.Alert; 
+        import dart.mashup.ontology.ClassFilterEvent;
+           
+        private var thumbBeingPressed:Boolean;
+        private var service:HTTPService;
+        private var catalogPanel:ClassCatalogPanel;
+           
+        private function dispatchFilter():void
+        {
+         /*   var event:ClassFilterEvent = 
+                new ClassFilterEvent(filter, thumbBeingPressed);
+            dispatchEvent(event);
+            currentState = "showingThumbnails";
+          */
+        }
+        
+        private function sliderValue(values:Array, index:int):Number
+        {
+            return values[index];
+        }
+        
+        private function sendClass():void
+        {
+        	var attrValue:String = "";
+        	var length:int = attributeList.items.length;
+        	if(length < 2)
+        		Alert.show("two or more attributes required!");
+        	else{        	
+	        	service = new HTTPService();
+	        	service.url = "http://localhost:8080/mashup/addOntology";
+	        	//service.url = "http://www.dart.zju.edu.cn/mashup/addOntology";
+	        	service.method = "post";
+	        	service.addEventListener("result", httpResult);
+	        	service.addEventListener("fault", httpFault);
+	        	var para:Object =  new Object();
+	        	para.classN = classN.text;
+	        	para.classDesc = classDesc.text;
+	        	para.author = "robin";
+	        	para.email = "lb@zju.edu.cn";
+	
+	        	for(var i:int = 0; i < length; i++){
+	        		var attributeItem:AttributeListItem = attributeList.items[i];
+	        		attrValue += attributeItem.attribute.name + "44" + attributeItem.attribute.desc;
+	        		if(i < length - 1)
+	        			attrValue += "55";
+	        	}
+	        	para.attrValue = attrValue;
+	        	service.send(para);
+        	}
+        }
+        
+        private function httpResult(event:ResultEvent):void
+        {
+        	//Alert.show(event.result.toString());
+        	var ontologyId:int = event.result.toString();
+        	var ontology:Ontology = new Ontology("robin", "lb@zju.edu.cn", ontologyId, classN.text, classDesc.text, "assets/classIcon/class.png");
+        	var temp:ArrayCollection = new ArrayCollection();
+        	var length:int = attributeList.items.length;
+        	for(var i:int = 0; i < length; i++){
+        		var attributeItem:AttributeListItem = attributeList.items[i];
+        		var attribute:Attribute = new Attribute(attributeItem.attribute.name, attributeItem.attribute.desc);
+				temp.addItem(attribute);
+        	}
+ 			ontology.fillAttributes(temp);
+        	
+        	var event2:ClassListEvent = new ClassListEvent(ClassListEvent.ADD_CLASS);
+        	event2.ontology = ontology;
+        	dispatchEvent(event2);
+        }
+        private function httpFault(event:FaultEvent):void
+        {
+        	Alert.show("class add error"); 
+        }
+        ]]>
+    </mx:Script>
+   
+    
+    <mx:Label text="Find" styleName="sectionHeader"/>
+    
+    <mx:HBox width="247">
+        <mx:TextInput styleName="glass" width="80%"/>
+        <mx:Button styleName="glass" label="Go" click="Alert.show('This feature is not implemented', 'Find')"/>
+    </mx:HBox>
+
+    <mx:Spacer height="18"/>
+
+    <mx:HRule width="100%"/>
+
+    <mx:Spacer height="8"/>
+    <mx:Label text="Add a Class" fontWeight="bold" />
+    <mx:VBox width="100%" height="196">
+    	<mx:Form verticalGap="0" paddingLeft="0" width="95%" height="154">
+    		<mx:FormItem label="Class Name:" width="98%">
+    			<mx:TextInput id="classN" styleName="glass" width="100%" />
+    			<mx:Spacer height="5"/>
+    		</mx:FormItem>
+    		<mx:FormItem label="Class Desc:" width="98%">
+    			<mx:TextInput id="classDesc" styleName="glass" width="100%" />
+    			<mx:Spacer height="5"/>
+    		</mx:FormItem>	
+    		<mx:FormItem label="Attribute name:" width="98%">
+    		    <mx:TextInput id="attributeName" styleName="glass" width="100%"/>
+    		    <mx:Spacer height="5"/>
+    		</mx:FormItem>
+    		<mx:FormItem label="Attribute desc:" width="98%">
+    		    <mx:TextInput id="attributeDesc" styleName="glass" width="100%"/>
+    		</mx:FormItem>
+    	</mx:Form>
+    	<mx:Button label="Add attribute" styleName="glass" click="attributeList.addAttribute(new Attribute(attributeName.text, attributeDesc.text))"/> 
+    </mx:VBox>
+	<mx:StringValidator source="{classN}" property="text" minLength="1" />
+	<mx:StringValidator source="{classDesc}" property="text" minLength="1" />  
+    <mx:HRule width="100%"/>
+
+    <mx:Spacer height="5"/>
+        <mx:HBox>
+            <mx:Label text="Attribute list" styleName="sectionHeader"/>
+            <mx:Label text="(Attributes you added)" styleName="instructions"/>
+        </mx:HBox>
+
+    <mx:Spacer height="2"/>
+
+    <classView:AttributeList id="attributeList" height="{attributeList.maxItems * AttributeListItem.HEIGHT + 4}" width="90%"
+        newItemStartX="300" newItemStartY="-100" maxItems="6" />
+    <mx:Spacer height="8"/>
+    <mx:Button label="Submit" styleName="glass" click="sendClass()" labelPlacement="left"/> 
+     <mx:states>
+       <mx:State name="showingThumbnails">
+       </mx:State>
+    </mx:states>
+
+</mx:VBox>

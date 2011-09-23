@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?> 
+<result>
+<concept name="SocialNetworking">
+  <instance name="Facebook" /> 
+  <concept name="MicroBlog">
+  <instance name="GoogleBuzz" /> 
+  <concept name="Twitter">
+  	<instance name= "yueyue"/>
+  	</concept> 
+  	<concept name= "xiexie">
+  		<instance name= "xiexie child1"> </instance>
+  		<instance name = "xiexiechild2"> </instance>
+  			<concept name = "haohao">
+  				<instance name = "haiohaochild"> </instance>
+  				</concept>
+  	</concept>
+  <instance name="SinaMicroBlog" /> 
+  </concept> 
+</concept>
+
+ </result>

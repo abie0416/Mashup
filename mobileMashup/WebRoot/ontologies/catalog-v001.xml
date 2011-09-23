@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<catalog id="XML Catalog File (see http://www.oasis-open.org/committees/entity/spec-2001-08-06.html) - Created By Protege 4" prefer="public" xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog">
+    <uri id="User Entered Import Resolution" name="http://localhost:8080/mobileMashup/ontologies/DianpingProfile.owl" uri="DianpingProfile.owl"/>
+    <uri id="User Entered Import Resolution" name="http://localhost:8080/mobileMashup/ontologies/GoogleProfile.owl" uri="GoogleProfile.owl"/>
+    <uri id="User Entered Import Resolution" name="http://localhost:8080/mobileMashup/ontologies/GoogleProcess.owl" uri="GoogleProcess.owl"/>
+    <uri id="User Entered Import Resolution" name="http://localhost:8080/mobileMashup/ontologies/DianpingProcess.owl" uri="DianpingProcess.owl"/>
+    <uri id="Imports Wizard Entry" name="http://www.dart.zju.edu.cn/ontologies/webservices/GoogleProcess.owl" uri="GoogleProcess.owl"/>
+    <uri id="Imports Wizard Entry" name="http://www.dart.zju.edu.cn/ontologies/webservices/GoogleProfile.owl" uri="GoogleProfile.owl"/>
+    <uri id="User Entered Import Resolution" name="http://localhost:8080/mobileMashup/ontologies/MobileGpsService.owl" uri="MobileGpsService.owl"/>
+    <uri id="Imports Wizard Entry" name="http://www.dart.zju.edu.cn/ontologies/webservices/MobileGpsService.owl" uri="MobileGpsService.owl"/>
+    <uri id="Imports Wizard Entry" name="http://localhost:8080/mobileMashup/ontologies/MobileGpsProfile.owl" uri="MobileGpsProfile.owl"/>
+    <uri id="Imports Wizard Entry" name="http://localhost:8080/mobileMashup/ontologies/MobileGpsProcess.owl" uri="MobileGpsProcess.owl"/>
+    <uri id="User Entered Import Resolution" name="http://localhost:8080/mobileMashup/ontologies/ObjectList.owl" uri="ObjectList.owl"/>
+    <uri id="User Entered Import Resolution" name="http://localhost:8080/mobileMashup/ontologies/Expression.owl" uri="Expression.owl"/>
+    <uri id="User Entered Import Resolution" name="http://localhost:8080/mobileMashup/ontologies/SinaMicroBlogService.owl" uri="SinaMicroBlogService.owl"/>
+    <uri id="User Entered Import Resolution" name="http://localhost:8080/mobileMashup/ontologies/SinaMicroBlogProfile.owl" uri="SinaMicroBlogProfile.owl"/>
+    <uri id="User Entered Import Resolution" name="http://localhost:8080/mobileMashup/ontologies/SinaMicroBlogProcess.owl" uri="SinaMicroBlogProcess.owl"/>
+    <uri id="Imports Wizard Entry" name="http://www.dart.zju.edu.cn/ontologies/webservices/SinaMicroBlogService.owl" uri="SinaMicroBlogService.owl"/>
+    <uri id="Imports Wizard Entry" name="http://www.daml.org/services/owl-s/1.2/Service.owl" uri="Service.owl"/>
+    <uri id="Imports Wizard Entry" name="http://www.dart.zju.edu.cn/ontologies/webservices/SinaMicroBlogProfile.owl" uri="SinaMicroBlogProfile.owl"/>
+    <uri id="Imports Wizard Entry" name="http://www.dart.zju.edu.cn/ontologies/webservices/SinaMicroBlogProcess.owl" uri="SinaMicroBlogProcess.owl"/>
+    <uri id="User Entered Import Resolution" name="http://localhost:8080/mobileMashup/ontologies/FlickrProfile.owl" uri="FlickrProfile.owl"/>
+    <uri id="User Entered Import Resolution" name="http://localhost:8080/mobileMashup/ontologies/FlickrProcess.owl" uri="FlickrProcess.owl"/>
+    <uri id="User Entered Import Resolution" name="http://localhost:8080/mobileMashup/ontologies/FlickrService.owl" uri="FlickrService.owl"/>
+    <uri id="User Entered Import Resolution" name="http://localhost:8080/mobileMashup/ontologies/UserProfile.owl" uri="UserProfile.owl"/>
+    <uri id="Imports Wizard Entry" name="http://www.dart.zju.edu.cn/ontologies/webservices/Concepts.owl" uri="Concepts.owl"/>
+    <uri id="Imports Wizard Entry" name="http://www.dart.zju.edu.cn/ontologies/webservices/FlickrService.owl" uri="FlickrService.owl"/>
+    <uri id="User Entered Import Resolution" name="http://www.daml.org/services/owl-s/1.2/generic/ObjectList.owl" uri="ObjectList.owl"/>
+    <uri id="Imports Wizard Entry" name="http://www.dart.zju.edu.cn/ontologies/webservices/FlickrProcess.owl" uri="FlickrProcess.owl"/>
+    <uri id="Imports Wizard Entry" name="http://www.dart.zju.edu.cn/ontologies/webservices/FlickrProfile.owl" uri="FlickrProfile.owl"/>
+    <uri id="Imports Wizard Entry" name="http://www.daml.org/services/owl-s/1.2/Profile.owl" uri="Profile.owl"/>
+    <uri id="Imports Wizard Entry" name="http://www.daml.org/services/owl-s/1.2/Process.owl" uri="Process.owl"/>
+    <uri id="User Entered Import Resolution" name="http://www.daml.org/services/owl-s/1.2/generic/Expression.owl" uri="Expression.owl"/>
+    <uri id="User Entered Import Resolution" name="http://localhost:8080/mobileMashup/ontologies/GoogleBuzzProfile.owl" uri="GoogleBuzzProfile.owl"/>
+    <uri id="User Entered Import Resolution" name="http://localhost:8080/mobileMashup/ontologies/GoogleBuzzProcess.owl" uri="GoogleBuzzProcess.owl"/>
+    <uri id="User Entered Import Resolution" name="http://localhost:8080/mobileMashup/ontologies/GoogleBuzzService.owl" uri="GoogleBuzzService.owl"/>
+    <uri id="Imports Wizard Entry" name="http:/www.dart.zju.edu.cn/ontologies/things/UserProfile.owl" uri="UserProfile.owl"/>
+    <uri id="User Entered Import Resolution" name="http://localhost:8080/mobileMashup/ontologies/Concepts.owl" uri="Concepts.owl"/>
+    <uri id="User Entered Import Resolution" name="http://localhost:8080/mobileMashup/ontologies/UserInputProfile.owl" uri="UserInputProfile.owl"/>
+    <uri id="User Entered Import Resolution" name="http://localhost:8080/mobileMashup/ontologies/UserInputProcess.owl" uri="UserInputProcess.owl"/>
+    <uri id="User Entered Import Resolution" name="http://localhost:8080/mobileMashup/ontologies/UserInputService.owl" uri="UserInputService.owl"/>
+    <uri id="User Entered Import Resolution" name="http://localhost:8080/mobileMashup/ontologies/TwitterProfile.owl" uri="TwitterProfile.owl"/>
+    <uri id="User Entered Import Resolution" name="http://localhost:8080/mobileMashup/ontologies/TwitterProcess.owl" uri="TwitterProcess.owl"/>
+    <uri id="User Entered Import Resolution" name="http://localhost:8080/mobileMashup/ontologies/TwitterService.owl" uri="TwitterService.owl"/>
+    <uri id="User Entered Import Resolution" name="http://localhost:8080/mobileMashup/ontologies/Profile.owl" uri="Profile.owl"/>
+    <uri id="User Entered Import Resolution" name="http://localhost:8080/mobileMashup/ontologies/FacebookProfile.owl" uri="FacebookProfile.owl"/>
+    <uri id="User Entered Import Resolution" name="http://localhost:8080/mobileMashup/ontologies/Process.owl" uri="Process.owl"/>
+    <uri id="User Entered Import Resolution" name="http://localhost:8080/mobileMashup/ontologies/FacebookProcess.owl" uri="FacebookProcess.owl"/>
+    <uri id="User Entered Import Resolution" name="http://localhost:8080/mobileMashup/ontologies/ApiClass.owl" uri="ApiClass.owl"/>
+    <uri id="User Entered Import Resolution" name="http://localhost:8080/mobileMashup/ontologies/Service.owl" uri="Service.owl"/>
+    <uri id="User Entered Import Resolution" name="http://localhost:8080/mobileMashup/ontologies/FacebookService.owl" uri="FacebookService.owl"/>
+    <uri id="User Entered Import Resolution" name="http://www.dart.zju.edu.cn/ontologies/webservices/UserInputProfile.owl" uri="UserInputProfile.owl"/>
+    <uri id="User Entered Import Resolution" name="http://www.dart.zju.edu.cn/ontologies/webservices/UserInputProcess.owl" uri="UserInputProcess.owl"/>
+    <uri id="User Entered Import Resolution" name="http://www.dart.zju.edu.cn/ontologies/webservices/UserInputService.owl" uri="UserInputService.owl"/>
+    <uri id="User Entered Import Resolution" name="http://www.dart.zju.edu.cn/ontologies/webservices/TwitterProfile.owl" uri="TwitterProfile.owl"/>
+    <uri id="User Entered Import Resolution" name="http://www.dart.zju.edu.cn/ontologies/webservices/TwitterProcess.owl" uri="TwitterProcess.owl"/>
+    <uri id="User Entered Import Resolution" name="http://www.dart.zju.edu.cn/ontologies/webservices/GoogleBuzzProfile.owl" uri="GoogleBuzzProfile.owl"/>
+    <uri id="User Entered Import Resolution" name="http://www.dart.zju.edu.cn/ontologies/webservices/GoogleBuzzProcess.owl" uri="GoogleBuzzProcess.owl"/>
+    <uri id="User Entered Import Resolution" name="http://www.dart.zju.edu.cn/ontologies/webservices/FacebookProfile.owl" uri="FacebookProfile.owl"/>
+    <uri id="User Entered Import Resolution" name="http://www.dart.zju.edu.cn/ontologies/webservices/FacebookProcess.owl" uri="FacebookProcess.owl"/>
+    <uri id="User Entered Import Resolution" name="http://www.dart.zju.edu.cn/ontologies/webservices/ApiClass.owl" uri="ApiClass.owl"/>
+    <uri id="Imports Wizard Entry" name="http://www.dart.zju.edu.cn/ontologies/webservices/FacebookService.owl" uri="FacebookService.owl"/>
+    <uri id="Imports Wizard Entry" name="http://www.dart.zju.edu.cn/ontologies/webservices/GoogleBuzzService.owl" uri="GoogleBuzzService.owl"/>
+    <uri id="Imports Wizard Entry" name="http://www.dart.zju.edu.cn/ontologies/webservices/TwitterService.owl" uri="TwitterService.owl"/>
+    <uri id="Imports Wizard Entry" name="http://www.dart.zju.edu.cn/ontologies/apis/UserInputProcess.owl" uri="UserInputProcess.owl"/>
+    <uri id="Imports Wizard Entry" name="http://www.dart.zju.edu.cn/ontologies/apis/UserInputProfile.owl" uri="UserInputProfile.owl"/>
+    <uri id="Imports Wizard Entry" name="http://www.dart.zju.edu.cn/ontologies/apis/Concepts.owl" uri="Concepts.owl"/>
+    <uri id="Imports Wizard Entry" name="http://www.dart.zju.edu.cn/ontologies/apis/ApiClass.owl" uri="ApiClass.owl"/>
+    <uri id="Imports Wizard Entry" name="http://www.dart.zju.edu.cn/ontologies/apis/FacebookProfile.owl" uri="FacebookProfile.owl"/>
+    <uri id="Imports Wizard Entry" name="http://www.dart.zju.edu.cn/ontologies/apis/FacebookProcess.owl" uri="FacebookProcess.owl"/>
+    <uri id="Imports Wizard Entry" name="http://www.dart.zju.edu.cn/ontologies/apis/GoogleBuzzProcess.owl" uri="GoogleBuzzProcess.owl"/>
+    <uri id="Imports Wizard Entry" name="http://www.dart.zju.edu.cn/ontologies/apis/GoogleBuzzProfile.owl" uri="GoogleBuzzProfile.owl"/>
+    <uri id="Imports Wizard Entry" name="http://www.dart.zju.edu.cn/ontologies/apis/TwitterProcess.owl" uri="TwitterProcess.owl"/>
+    <uri id="Imports Wizard Entry" name="http://www.dart.zju.edu.cn/ontologies/apis/TwitterProfile.owl" uri="TwitterProfile.owl"/>
+    <uri id="User Entered Import Resolution" name="http://www.dart.zju.edu.cn/ontologies/webservices/Expression.owl" uri="Expression.owl"/>
+    <uri id="Imports Wizard Entry" name="http://www.dart.zju.edu.cn/ontologies/webservices/Service.owl" uri="Service.owl"/>
+    <group id="Folder Repository, directory=H:\owl-s\myprojectfiles, recursive=true, Auto-Update=true" prefer="public" xml:base="">
+        <uri id="Automatically generated entry, Timestamp=1289611723000" name="http://www.dart.zju.edu.cn/ontologies/apis/FacebookService.owl" uri="FacebookService.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1289611723000" name="http://www.dart.zju.edu.cn/ontologies/webservices/Expression.owl" uri="Expression.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1289611723000" name="http://www.dart.zju.edu.cn/ontologies/apis/TwitterProcess.owl" uri="TwitterProcess.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1289611723000" name="http://www.dart.zju.edu.cn/ontologies/apis/FacebookProfile.owl" uri="FacebookProfile.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1289611723000" name="http://www.dart.zju.edu.cn/ontologies/apis/TwitterService.owl" uri="TwitterService.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1289611723000" name="http://www.dart.zju.edu.cn/ontologies/webservices/Profile.owl" uri="Profile.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1289611723000" name="http://www.dart.zju.edu.cn/ontologies/webservices/Service.owl" uri="Service.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1289611723000" name="http://www.dart.zju.edu.cn/ontologies/apis/TwitterProfile.owl" uri="TwitterProfile.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1289611723000" name="http://www.dart.zju.edu.cn/ontologies/webservices/ObjectList.owl" uri="ObjectList.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1289611723000" name="http://www.dart.zju.edu.cn/ontologies/webservices/Process.owl" uri="Process.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1289711593437" name="http://www.dart.zju.edu.cn/ontologies/things/UserProfile.owl" uri="UserProfile.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1289711593437" name="http://www.dart.zju.edu.cn/ontologies/apis/GoogleBuzzService.owl" uri="GoogleBuzzService.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1289711593437" name="http://www.dart.zju.edu.cn/ontologies/apis/FacebookProcess.owl" uri="FacebookProcess.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1289711593437" name="http://www.dart.zju.edu.cn/ontologies/apis/ApiClass.owl" uri="ApiClass.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1289711593437" name="http://www.dart.zju.edu.cn/ontologies/apis/Concepts.owl" uri="Concepts.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1289711593437" name="http://www.dart.zju.edu.cn/ontologies/apis/UserInputProfile.owl" uri="UserInputProfile.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1289711593437" name="http://www.dart.zju.edu.cn/ontologies/apis/UserInputService.owl" uri="UserInputService.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1289711593437" name="http://www.dart.zju.edu.cn/ontologies/apis/UserInputProcess.owl" uri="UserInputProcess.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1289786322171" name="http://www.dart.zju.edu.cn/ontologies/apis/GoogleBuzzProfile.owl" uri="GoogleBuzzProfile.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1289786322171" name="http://www.dart.zju.edu.cn/ontologies/apis/GoogleBuzzProcess.owl" uri="GoogleBuzzProcess.owl"/>
+    </group>
+</catalog>

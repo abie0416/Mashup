@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:TitleWindow name="setPara" xmlns:mx="http://www.adobe.com/2006/mxml"
+	title="Parameter Seting..."  width="500" height="400"
+		verticalAlign="middle" horizontalAlign="center" 
+		borderColor="#333333" paddingBottom="5" horizontalGap="5">
+		
+<mx:Metadata>
+		[Event(name="setPara", type = "flash.events.Event")]
+		[Event(name="setCondition", type = "flash.events.Event")]
+		[Event(name="VariableforUserInput", type = "flash.events.Event")]
+		[Event(name="cancelPara", type = "flash.events.Event")]
+</mx:Metadata>
+<mx:Script>
+	<![CDATA[
+
+				import org.un.cava.birdeye.ravis.graphLayout.visual.VisualGraph;
+				import mx.managers.PopUpManager;
+				
+				private function SaveMe():void{
+					dispatchEvent(new Event("setPara"));
+//					closeMe();
+				}
+				private function closeMe():void{
+						dispatchEvent(new Event("cancelPara"));
+					
+				}
+				
+				private function Come_To_Conditions():void{
+					dispatchEvent(new Event("setCondition"));
+					
+//					closeMe();
+				}
+				
+				private function Variable_for_UserInput():void{
+					dispatchEvent(new Event("VariableforUserInput"));
+					
+//					closeMe();
+				}
+		
+		
+	]]>
+</mx:Script>
+	<mx:XML id="xmldata"/>
+
+		
+		
+		<mx:HBox  id="Nodehbox"  name="Nodehbox" width="100%" height="80%"  top="5">
+				<mx:VBox width="20%" height="100%" verticalAlign="top" horizontalAlign="center">
+						<mx:Label text="Inputs" textAlign="center" width="100%" height="10%"/>
+						<mx:VBox id="fromNodeVbox"	 width="100%" height="90%" verticalAlign="top" horizontalAlign="center"/>					
+				</mx:VBox>
+				<mx:VBox width="20%" height="100%" verticalAlign="top" horizontalAlign="center">
+						<mx:Label text="ModeSelect" textAlign="center" width="100%" height="10%"/>
+						<mx:VBox id="selectVbox" width="100%" height="90%" verticalAlign="top" horizontalAlign="center"/>					
+				</mx:VBox>
+				<mx:VBox  width="40%" height="100%" verticalAlign="top" horizontalAlign="center" >
+						<mx:Label text="outputs" textAlign="center" width="100%" height="10%"/>
+						<mx:VBox id="toNodeVbox" width="100%" height="90%" verticalAlign="top" horizontalAlign="center"/>			
+				</mx:VBox>
+				<mx:VBox width="20%" height="100%" verticalAlign="top" horizontalAlign="center" >
+						<mx:Label text="Semantic" textAlign="center" width="100%" height="10%"/>
+						<mx:VBox id="semanticVbox" width="100%" height="90%" verticalAlign="top" horizontalAlign="center"/>		
+
+				</mx:VBox>
+				<mx:VBox id="typeVbox" visible="false">
+
+				</mx:VBox>
+				<mx:VBox id="outputVbox" visible="false" >
+
+				</mx:VBox>
+		</mx:HBox>
+
+	<mx:HBox id="Control" width="100%" height="20%" verticalAlign="middle" horizontalAlign="center" >
+		<mx:Button label="Save" right="5" bottom="0" click="SaveMe()"/>
+		<mx:Button label="Cancel" right="10" bottom="0" click="closeMe()"/>
+		<mx:Button label="Come To Conditions" right="10" bottom="0" click="Come_To_Conditions()"/>
+		<mx:Button label="Variable for UserInput" right="10" bottom="0" click="Variable_for_UserInput()"/>
+   </mx:HBox>
+	</mx:TitleWindow>

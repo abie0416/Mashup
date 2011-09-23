@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Canvas xmlns:mx="http://www.adobe.com/2006/mxml" width="100%" height="100%" 
+	 xmlns:mashupBuild="mashupBuild.*"
+	 creationComplete="_init()" >
+
+    <mx:Script>
+          <![CDATA[
+          	import mx.containers.HBox;
+          	import mx.controls.AdvancedDataGrid;
+          	import mx.containers.Panel;
+          	import mx.controls.Button;
+          	
+          	import mx.controls.TextArea;
+          	import mx.controls.Alert;
+            
+          	import mx.events.ListEvent;
+            import mx.collections.ArrayCollection; 
+            import mx.rpc.events.ResultEvent;     
+            import mx.collections.XMLListCollection;
+            import mx.core.UIComponent; 
+            
+            import org.un.cava.birdeye.ravis.graphLayout.data.INode;
+			import org.un.cava.birdeye.ravis.graphLayout.data.IGraph;
+			import org.un.cava.birdeye.ravis.graphLayout.data.Graph;			
+			import org.un.cava.birdeye.ravis.graphLayout.visual.VisualNode;
+			import org.un.cava.birdeye.ravis.graphLayout.visual.IVisualNode;
+			import org.un.cava.birdeye.ravis.graphLayout.visual.IVisualGraph;
+			import org.un.cava.birdeye.ravis.graphLayout.visual.IEdgeRenderer;
+			import org.un.cava.birdeye.ravis.graphLayout.layout.ILayoutAlgorithm;
+			import org.un.cava.birdeye.ravis.graphLayout.layout.ConcentricRadialLayouter;
+			import org.un.cava.birdeye.ravis.graphLayout.visual.edgeRenderers.DirectedBalloonEdgeRenderer;
+			import org.un.cava.birdeye.ravis.graphLayout.visual.VisualGraph;
+         
+            import Mashup;
+            import mashupBuild.Ravis;
+            import mashupBuild.renderers.nodes.mxml.eventNodeRenderer;
+            [Bindable]
+			private var dic1:Dictionary;
+ 			private function _init(): void {
+ 				if(Mashup.xml != null)
+ 				{
+ 					init();
+
+ 				}
+ 			}
+ 
+ 			public function init():void{  
+ 				    var xml:XML = Mashup.xml;			
+					dic1 = new Dictionary();
+					getAll(xml,dic1);									
+					tree.dataProvider = xml;
+			}  
+
+		  static private var Count :int =0; 
+           private function getAll( xml:XML ,dic1:Dictionary):void 
+            {
+					var name:String = xml.@name;
+					dic1[name] = Count; 
+					Count++;
+                if(xml.children().length()>0) {
+                    for each(var node:XML in xml.children())
+                        arguments.callee(node,dic1);
+
+                }
+            }
+            
+            private function tree_itemClick(e:ListEvent):void{
+            	var node :XML = tree.selectedItem as XML;
+            	var isOpen:Boolean = tree.isItemOpen(node);
+            	tree.expandItem(node,!isOpen);
+            	
+            }
+            
+            private function tree_itemDoubleClick(e:ListEvent):void{            		
+        		var xml:XML = tree.selectedItem as XML;
+        		if(xml.children().length() == 0){
+            		var name:String = xml.@name;
+//            		xmlLoader.url = "mashupBuild/data/tree.xml";
+           		xmlLoader.url ="http://localhost:8080/mobileMashup/matchedServices?serviceName="+name;
+            		xmlLoader.send();
+        		}
+            }
+            
+     		
+     		private function xmlReturned(event:ResultEvent):void{
+     			trace("uiMotify: xmlReturned()");
+     			trace(event.result.toString());
+				var xmldata:XML= event.result as XML;
+     			var build:Canvas = this.parentApplication.mashupViews.getChildByName("mashupBuild") as Canvas; 
+     			var hbox:HBox = build.getChildByName("hbox") as HBox;
+				
+				
+				var len = Graph.selectedData.length;
+				for (var j:int=1;j<len;j++)
+						Graph.selectedData.removeItemAt(1);
+				for (var item:String  in  Graph.selectedDataChild)
+								delete Graph.selectedDataChild[item];
+				Graph.selectedDataChild[Graph.selectedData.getItemAt(0)] = new ArrayCollection();
+				Graph.action = "";
+				
+				VisualGraph.mode = false;
+//				for (var key:String  in  VisualGraph.varWarehouse)
+//								delete VisualGraph.varWarehouse[key];
+     			hbox.removeChildAt(1);
+     			
+     			Ravis.xmldata = xmldata;
+     			
+     		  	var ravis:Ravis = new Ravis();
+      		  	hbox.addChild(ravis);
+    		}
+     		
+     		
+     	[Embed(source="./assets/imgs/tree_folder.png")]          //这是图片的相对地址   
+        [Bindable]   
+         public var folder:Class;   
+               
+        [Embed(source="./assets/imgs/tree_leaf.png")]          //这是图片的相对地址   
+        [Bindable]   
+        public var leaf:Class;   
+           
+        private function iconFun(item:Object):*   
+       {   
+            var xml:XML= XML(item);   
+            if(xml.children().length() >0 )   
+                     return folder;   
+            else if(xml.children().length() ==0)   
+                     return leaf;   
+        }     
+          ]]>
+    </mx:Script>
+
+    <mx:HTTPService id="xmlLoader"  resultFormat ="e4x" result="xmlReturned(event)" />
+
+            <mx:Panel id="uiMotifymain" name="main" title="Web Service Repository" width="100%" height="100%" 
+							borderColor="#333333"  horizontalGap="5" backgroundColor="#FFFFFF" >
+    	  <mx:Tree  id="tree" width="100%" height="100%"  labelField="@name" showRoot="false" 
+        		 showScrollTips="true"
+        		  	dragEnabled="true"
+        	          dropEnabled="true"
+        	     			dragMoveEnabled="true"
+        	     			 doubleClickEnabled="true"
+        	     			 	itemClick="tree_itemClick(event)"
+        	     			     itemDoubleClick="tree_itemDoubleClick(event)"        
+        	     			       iconFunction="iconFun"  backgroundColor="#000000" alpha="0.8"
+        	     			        color="green"   fontWeight="bold"  fontSize="11"       	     			        
+        	     			  /> 
+        	     			  </mx:Panel>
+ </mx:Canvas>
+

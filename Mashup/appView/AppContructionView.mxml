@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Canvas xmlns:mx="http://www.adobe.com/2006/mxml" width="100%" height="100%" xmlns:appView="appView.*">
+	<mx:HBox width="100%" height="100%" verticalAlign="middle">
+		<appView:AppBlocksList width="15%" height="100%"/>
+		<appView:AppPreviewContainer id="previewContainer" width="35%" height="100%"/>
+		<appView:AppComponentList id="treeDisplay" width="25%" height="100%"/>
+		<mx:VBox width="25%" height="100%">			
+			<appView:AppComponentProperty id="propertyContainer" width="100%" height="50%"/>
+			<mx:VBox id="serviceOutputList" width="100%" height="50%" backgroundColor="white"/>
+		</mx:VBox>
+	</mx:HBox>	
+</mx:Canvas>

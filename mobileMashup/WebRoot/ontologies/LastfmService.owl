@@ -1,0 +1,137 @@
+<?xml version="1.0"?>
+
+
+<!DOCTYPE rdf:RDF [
+    <!ENTITY owl "http://www.w3.org/2002/07/owl#" >
+    <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
+    <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
+    <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
+    <!ENTITY Service "http://www.daml.org/services/owl-s/1.2/Service.owl#" >
+    <!ENTITY ApiClass "http://www.dart.zju.edu.cn/ontologies/webservices/ApiClass.owl#" >
+    <!ENTITY LastfmProfile "http://www.dart.zju.edu.cn/ontologies/webservices/LastfmProfile.owl#" >
+    <!ENTITY LastfmProcess "http://www.dart.zju.edu.cn/ontologies/webservices/LastfmProcess.owl#" >
+]>
+
+
+<rdf:RDF xmlns="http://www.dart.zju.edu.cn/ontologies/webservices/LastfmService.owl#"
+     xml:base="http://www.dart.zju.edu.cn/ontologies/webservices/LastfmService.owl"
+     xmlns:Service="http://www.daml.org/services/owl-s/1.2/Service.owl#"
+     xmlns:LastfmProfile="http://www.dart.zju.edu.cn/ontologies/webservices/LastfmProfile.owl#"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:LastfmProcess="http://www.dart.zju.edu.cn/ontologies/webservices/LastfmProcess.owl#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:ApiClass="http://www.dart.zju.edu.cn/ontologies/webservices/ApiClass.owl#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:owl="http://www.w3.org/2002/07/owl#">
+    <owl:Ontology rdf:about="http://www.dart.zju.edu.cn/ontologies/webservices/LastfmService.owl">
+        <owl:imports rdf:resource="http://localhost:8080/mobileMashup/ontologies/ApiClass.owl"/>
+        <owl:imports rdf:resource="http://localhost:8080/mobileMashup/ontologies/LastfmProcess.owl"/>
+        <owl:imports rdf:resource="http://localhost:8080/mobileMashup/ontologies/LastfmProfile.owl"/>
+    </owl:Ontology>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.daml.org/services/owl-s/1.2/Service.owl#describedBy -->
+
+    <owl:ObjectProperty rdf:about="&Service;describedBy"/>
+    
+
+
+    <!-- http://www.daml.org/services/owl-s/1.2/Service.owl#presents -->
+
+    <owl:ObjectProperty rdf:about="&Service;presents"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.daml.org/services/owl-s/1.2/Service.owl#Service -->
+
+    <owl:Class rdf:about="&Service;Service"/>
+    
+
+
+    <!-- http://www.dart.zju.edu.cn/ontologies/webservices/ApiClass.owl#MusicApi -->
+
+    <owl:Class rdf:about="&ApiClass;MusicApi"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Individuals
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.dart.zju.edu.cn/ontologies/webservices/LastfmProcess.owl#getArtistInfoProcess -->
+
+    <owl:NamedIndividual rdf:about="&LastfmProcess;getArtistInfoProcess"/>
+    
+
+
+    <!-- http://www.dart.zju.edu.cn/ontologies/webservices/LastfmProfile.owl#getArtistInfoProfile -->
+
+    <owl:NamedIndividual rdf:about="&LastfmProfile;getArtistInfoProfile"/>
+    
+
+
+    <!-- http://www.dart.zju.edu.cn/ontologies/webservices/LastfmService.owl#getArtistInfoService -->
+
+    <owl:NamedIndividual rdf:about="http://www.dart.zju.edu.cn/ontologies/webservices/LastfmService.owl#getArtistInfoService">
+        <rdf:type rdf:resource="&Service;Service"/>
+        <rdf:type rdf:resource="&ApiClass;MusicApi"/>
+        <Service:describedBy rdf:resource="&LastfmProcess;getArtistInfoProcess"/>
+        <Service:presents rdf:resource="&LastfmProfile;getArtistInfoProfile"/>
+    </owl:NamedIndividual>
+
+    <!-- http://www.dart.zju.edu.cn/ontologies/webservices/LastfmProcess.owl#getEventsProcess -->
+
+    <owl:NamedIndividual rdf:about="&LastfmProcess;getEventsProcess"/>
+    
+
+
+    <!-- http://www.dart.zju.edu.cn/ontologies/webservices/LastfmProfile.owl#getEventsProfile -->
+
+    <owl:NamedIndividual rdf:about="&LastfmProfile;getEventsProfile"/>
+    
+
+
+    <!-- http://www.dart.zju.edu.cn/ontologies/webservices/LastfmService.owl#getEventsService -->
+
+    <owl:NamedIndividual rdf:about="http://www.dart.zju.edu.cn/ontologies/webservices/LastfmService.owl#getEventsService">
+        <rdf:type rdf:resource="&Service;Service"/>
+        <rdf:type rdf:resource="&ApiClass;MusicApi"/>
+        <Service:describedBy rdf:resource="&LastfmProcess;getEventsProcess"/>
+        <Service:presents rdf:resource="&LastfmProfile;getEventsProfile"/>
+    </owl:NamedIndividual>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 3.1.0.20069) http://owlapi.sourceforge.net -->
+

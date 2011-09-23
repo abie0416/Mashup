@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<mx:HBox xmlns:mx="http://www.adobe.com/2006/mxml" 
+    styleName="listItem"
+    height="{ClassListItem.HEIGHT}"
+    automationName="{ontology.name}">
+
+    <mx:Metadata>
+       [Event(name="removeClass", type="dart.mashup.ontology.ClassListEvent")]
+    </mx:Metadata>
+    
+    <mx:Script> 
+    <![CDATA[
+    
+    	import dart.mashup.ontology.Ontology;
+    	import dart.mashup.ontology.ClassListEvent;
+        
+        public static const HEIGHT:int = 30;
+        
+        [Bindable]
+        public var ontology:Ontology;
+        
+        private function removeItem():void
+        {
+            var event:ClassListEvent = new ClassListEvent(ClassListEvent.REMOVE_CLASS);
+            event.ontology = ontology;
+    		dispatchEvent(event);
+        }
+        
+    ]]> 
+    </mx:Script>
+    
+    <mx:Button id="removeButton"
+        width="14" height="14" 
+        icon="@Embed('/assets/trashcan.png')"
+        toolTip="Remove from selected list"
+        click="removeItem()"/>
+
+    <mx:Image id="classImage" width="12" height="24" source="{ontology.image}"/>
+
+    <mx:Label id="ontologyName" maxWidth="100" text="{ontology.name}"/>
+
+    <mx:Spacer width="100%" />
+    
+</mx:HBox>

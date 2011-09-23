@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Canvas xmlns:mx="http://www.adobe.com/2006/mxml" 
+		    xmlns:lc="org.un.cava.birdeye.ravis.components.ui.controls.layouterControls.*"
+   			 xmlns:vc="org.un.cava.birdeye.ravis.components.ui.controls.vgraphControls.*"
+    		xmlns:ui="org.un.cava.birdeye.ravis.components.ui.*"
+    		  xmlns:dp="org.un.cava.birdeye.ravis.components.ui.dataPresentation.*"  	
+    		  xmlns:flexlib="http://code.google.com/p/flexlib/"	  
+    		 width="100%" height="100%"
+    		 fontWeight="bold"  fontSize="10"
+    		>
+<mx:Script>
+	<![CDATA[
+
+			import org.un.cava.birdeye.ravis.graphLayout.visual.VisualGraph;
+		     [Bindable]
+			private var _vgraph:VisualGraph;
+			 public function set vgraph(v:VisualGraph):void {
+				_vgraph = v;
+			}
+			public function get vgraph( ):VisualGraph {
+				return _vgraph ;
+			}
+	]]>
+</mx:Script>
+    <mx:WipeLeft id="wipeLeft" duration="1000" />
+    <mx:WipeRight id="wipeRight" duration="1000" />
+    <mx:Panel id="control_Panel" name="main" title="Controller Panel" width="100%" height="100%" 
+							borderColor="#333333"  horizontalGap="5" backgroundColor="#FFFFFF" >
+         <mx:HBox id="DivNavRB" width="100%" height="100%" horizontalGap="5" >
+			<mx:HBox id="sideBar" width="100%" height="100%" horizontalGap="0">
+                    <!--ui:Grip id="navGrip" 
+                        width="17" height="100%" horizontalAlign="center"
+                        gripTip="Show/Hide Control Panel" /-->
+                    <mx:VBox id="NavContainerRB"
+                        horizontalScrollPolicy="off"
+                        verticalScrollPolicy="off"
+                        verticalAlign="middle"
+                        horizontalAlign="center"
+                        verticalGap="1"
+                        horizontalGap="0"
+                        width="100%"
+                        height="100%"
+                        hideEffect="{wipeLeft}"
+                        showEffect="{wipeRight}">
+                        <!--mx:Accordion id="leftAccordion"
+                             paddingBottom="5"
+                             paddingRight="5"
+                            paddingTop="5"
+                            paddingLeft="5"
+                            horizontalScrollPolicy="off"
+                            verticalScrollPolicy="off"
+                            width="100%"
+                            height="100%"-->
+                            <mx:Canvas id="visibilitycnvs"
+                                height="100%"
+                                width="100%"
+                                horizontalScrollPolicy="off"
+                                verticalScrollPolicy="off" backgroundColor="#000000" alpha="0.8">
+                                <mx:VBox width="100%"
+                                    height="100%"
+                                    horizontalAlign="center"
+                                    horizontalScrollPolicy="off"
+                                    verticalScrollPolicy="off">
+                                    <mx:Spacer height="3" />
+                                    
+                                    <flexlib:WindowShade
+                                        id="layoutContainer"
+                                        label="Layout"
+                                          styleName="linkButtonWindowShade" 
+                                        width="100%"
+                                        opened="false"
+                                        horizontalAlign="center"
+                                        paddingBottom="5"
+                                        >
+                                        <mx:VBox
+                                            width="99%"
+                                            horizontalAlign="center"
+                                            paddingLeft="5"
+                                            paddingRight="5"
+                                            paddingBottom="5"
+                                            paddingTop="5"
+                                            borderColor="#666666"
+                                            borderThickness="1"
+                                            cornerRadius="5"
+                                            borderStyle="solid"
+                                            backgroundColor="#CCCCCC"
+                                            backgroundAlpha=".2" >
+                                            
+                                            <lc:LayoutSelector id="myLayoutSelector" vgraph="{_vgraph}" />
+                                            <lc:HierLayoutControls id="myHierLC" vgraph="{_vgraph}" />
+                                            <lc:PhiDial id="myPhiDial" vgraph="{_vgraph}" />
+                                            <lc:ToggleDamping id="myDamping" vgraph="{_vgraph}" />
+                                            <lc:CommonLayoutControls id="myCommonLC" vgraph="{_vgraph}" visible="false"/>
+                                            <!--dp:CenteredNodeLabel id="myCenteredNodeLabel" vgraph="{_vgraph}" /-->
+                                            <dp:NoVisNodesLabel id="myNoVisNodeLabel" vgraph="{_vgraph}" />
+                                            
+                                        </mx:VBox>
+                                    </flexlib:WindowShade>
+                                          <!-- Node Styles -->
+                                    <!--flexlib:WindowShade
+                                        id="nodeRenderContainer"
+                                        styleName="linkButtonWindowShade" 
+                                        label="Node Styles"
+                                        width="100%"
+                                        opened="true"
+                                        horizontalAlign="center"
+                                        paddingBottom="5"
+                                        >
+                                        
+                                        <vc:NodeRendererSelector id="myNodeRendererSelector" vgraph="{_vgraph}" />
+                                        
+                                    </flexlib:WindowShade-->
+                                    
+                                    <!-- Edge Styles -->
+                                    <flexlib:WindowShade
+                                        id="edgeRenderContainer"
+                                        styleName="linkButtonWindowShade" 
+                                        label="Edge Styles"
+                                        width="100%"
+                                        opened="true"
+                                        horizontalAlign="center"
+                                        paddingBottom="5"
+                                        >
+                                        
+                                        <vc:EdgeRendererSelector id="myEdgeRendererSelector" vgraph="{_vgraph}" />
+                                        
+                                    </flexlib:WindowShade>
+                                    
+                                    <!-- Edge Labels -->
+                                    <!--flexlib:WindowShade
+                                        id="edgeLabelRenderContainer"
+                                        styleName="linkButtonWindowShade" 
+                                        label="Edge Label Styles"
+                                        width="100%"
+                                        opened="true"
+                                        horizontalAlign="center"
+                                        paddingBottom="5"
+                                        >
+                                        <vc:EdgeLabelControls id="myELCs" vgraph="{_vgraph}" />
+                                    </flexlib:WindowShade-->
+                                    
+                                    <flexlib:WindowShade
+                                        id="viewControlsContainer"
+                                        styleName="linkButtonWindowShade" 
+                                        label="View Controls"
+                                        width="100%"
+                                        opened="true"
+                                        horizontalAlign="center"
+                                        paddingBottom="5"
+                                        >
+                                        <mx:VBox
+                                            width="97%"
+                                            horizontalAlign="center"
+                                            paddingLeft="5"
+                                            paddingRight="5"
+                                            paddingBottom="5"
+                                            paddingTop="5"
+                                            borderColor="#666666"
+                                            borderThickness="1"
+                                            cornerRadius="5"
+                                            borderStyle="solid"
+                                            backgroundColor="#CCCCCC"
+                                            backgroundAlpha=".2" >
+                                            <vc:DegreesOfSeparation id="myDegreeOS" vgraph="{_vgraph}" />
+                                            <vc:ScaleControls id="mySCs" vgraph="{_vgraph}" />
+
+                                        </mx:VBox>
+                                    </flexlib:WindowShade>                                    
+                                    <!--mx:Spacer height="5" /-->
+                                </mx:VBox>		
+                            </mx:Canvas>
+                        <!--/mx:Accordion-->
+                    </mx:VBox>	
+                   </mx:HBox>
+                </mx:HBox>
+                </mx:Panel>
+    <!--mx:states>
+        <mx:State name="showCntrlPanel">
+            <mx:SetProperty target="{sideBar}" name="width" value="300" />
+            <mx:SetStyle target="{DivNavRB}" name="horizontalGap" value="5" />
+        </mx:State>        
+        <mx:State name="hideCntrlPanel">
+            <mx:SetProperty target="{sideBar}" name="width" value="17" />
+            <mx:SetStyle target="{DivNavRB}" name="horizontalGap" value="0" />
+        </mx:State>
+    </mx:states>
+    <mx:transitions>
+        <mx:Transition fromState="*" toState="*">
+            <mx:Resize target="{sideBar}" />
+        </mx:Transition>
+    </mx:transitions-->
+</mx:Canvas>

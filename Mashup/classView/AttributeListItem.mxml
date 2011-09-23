@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<mx:HBox xmlns:mx="http://www.adobe.com/2006/mxml" 
+    styleName="listItem"
+    height="{AttributeListItem.HEIGHT}"
+    automationName="{attribute.name}">
+
+    <mx:Metadata>
+       [Event(name="removeAttribute", type="dart.mashup.ontology.AttributeListEvent")]
+    </mx:Metadata>
+    
+    <mx:Script>
+    <![CDATA[
+    
+    	import dart.mashup.ontology.Attribute;
+    	import dart.mashup.ontology.AttributeListEvent;
+        
+        public static const HEIGHT:int = 25;
+        
+        [Bindable]
+        public var attribute:Attribute;
+        
+        private function removeItem():void
+        {
+            var event:AttributeListEvent = new AttributeListEvent(AttributeListEvent.REMOVE_ATTRIBUTE);
+            event.attribute = attribute;
+    		dispatchEvent(event);
+        }
+        
+    ]]> 
+    </mx:Script>
+    
+    <mx:Button id="removeButton"
+        width="14" height="14" 
+        icon="@Embed('/assets/trashcan.png')"
+        toolTip="Remove from attribute list"
+        click="removeItem()"/>
+
+    <mx:Image id="attributeImage" width="12" height="24" source="@Embed('/assets/attribute.png')"/>
+
+    <mx:Label id="attributeName" maxWidth="100" text="{attribute.name}"/>
+    
+    <mx:Label id="attributeDesc" maxWidth="100"  text="{attribute.desc}"/>
+
+    <mx:Spacer width="100%" />
+    
+</mx:HBox>

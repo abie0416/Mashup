@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<mx:Canvas xmlns:mx="http://www.adobe.com/2006/mxml" 
+    xmlns:classView="classView.*"
+    horizontalScrollPolicy="off" verticalScrollPolicy="off">
+
+    <mx:Metadata>
+        [Event(name="purchase", type="dart.mashup.ontology.ClassThumbEvent")]
+        [Event(name="browse", type="dart.mashup.ontology.ClassThumbEvent")]
+    </mx:Metadata>
+
+    <mx:Script>
+        <![CDATA[
+
+		import mx.events.*;
+		
+		import dart.mashup.ontology.Ontology;
+		import dart.mashup.ontology.ClassThumbEvent;
+
+        private var _ontology:Ontology;
+        
+        [Bindable]
+        public function get ontology():Ontology
+        {
+            return _ontology;
+        }
+        
+        public function set ontology(p:Ontology):void
+        {
+            _ontology = p;
+            tn.selectedIndex = 0;
+        }
+        
+	]]>
+    </mx:Script>
+
+    <mx:TabNavigator id="tn" width="100%" height="100%" 
+                    left="4" right="8" top="4" bottom="4">
+
+        <mx:VBox width="100%" height="100%" label="Features" verticalGap="8"
+            paddingLeft="8" paddingTop="8" paddingRight="8" paddingBottom="8" showEffect="Fade" hideEffect="Fade">
+
+            <mx:HBox width="100%" horizontalGap="12">
+
+                <mx:Image id="img" width="101" height="200" source="{ontology.image}"/>
+
+                <mx:VBox id="descr" width="100%" height="100%" paddingTop="0" verticalGap="4">
+
+                    <mx:Label text="{ontology.name}" fontSize="11" fontWeight="bold"/>
+   					<mx:Text id="descriptionText" width="100%" height="100%" text="{ontology.description}"/>
+                </mx:VBox>
+            </mx:HBox>
+
+	        <mx:DataGrid id="dg" width="100%" height="100%" rowCount="1" dataProvider="{ontology.attributes}">
+	            <mx:columns>
+	                <mx:DataGridColumn dataField="name" headerText="Attribute Name"/>
+	                <mx:DataGridColumn dataField="desc" headerText="Description"/>
+	            </mx:columns>
+	        </mx:DataGrid> 
+        </mx:VBox>
+        <mx:VBox width="100%" height="100%" label="Author Info" verticalGap="8"
+            paddingLeft="8" paddingTop="8" paddingRight="8" paddingBottom="8" showEffect="Fade" hideEffect="Fade">
+            <mx:HBox width="100%" horizontalGap="12">
+            	<mx:Label text="Author: " fontSize="11" fontWeight="bold" />
+            	<mx:Label text="{ontology.author}" fontSize="11" fontWeight="normal" />
+            </mx:HBox>
+            <mx:HBox width="100%" horizontalGap="12">
+            	<mx:Label text="Email: " fontSize="11" fontWeight="bold" />
+            	<mx:Label text="{ontology.email}" fontSize="11" fontWeight="normal" />
+            </mx:HBox> 
+            
+         </mx:VBox> 
+
+    </mx:TabNavigator>
+	
+    <mx:VBox verticalGap="4" right="16" top="36">
+        <mx:Spacer width="100%"/>
+        <mx:Button icon="@Embed('/assets/report_add.png')" click="dispatchEvent(new ClassThumbEvent(ClassThumbEvent.PURCHASE, ontology))" width="30" toolTip="Add to selected list"/>
+        <mx:Button icon="@Embed('/assets/icon_tiles.png')" click="dispatchEvent(new ClassThumbEvent(ClassThumbEvent.BROWSE, ontology));" width="30" toolTip="Back to thumbnail view"/>
+    </mx:VBox>
+
+</mx:Canvas>

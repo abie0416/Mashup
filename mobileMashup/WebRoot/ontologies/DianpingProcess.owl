@@ -1,0 +1,209 @@
+<?xml version="1.0"?>
+
+
+<!DOCTYPE rdf:RDF [
+    <!ENTITY owl "http://www.w3.org/2002/07/owl#" >
+    <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
+    <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
+    <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
+    <!ENTITY Process "http://www.daml.org/services/owl-s/1.2/Process.owl#" >
+    <!ENTITY DianpingProcess "http://www.dart.zju.edu.cn/ontologies/webservices/DianpingProcess.owl#" >
+]>
+
+
+<rdf:RDF xmlns="http://www.dart.zju.edu.cn/ontologies/webservices/DianpingProcess.owl#"
+     xml:base="http://www.dart.zju.edu.cn/ontologies/webservices/DianpingProcess.owl"
+     xmlns:Process="http://www.daml.org/services/owl-s/1.2/Process.owl#"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:DianpingProcess="http://www.dart.zju.edu.cn/ontologies/webservices/DianpingProcess.owl#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:owl="http://www.w3.org/2002/07/owl#">
+    <owl:Ontology rdf:about="http://www.dart.zju.edu.cn/ontologies/webservices/DianpingProcess.owl">
+        <owl:imports rdf:resource="http://localhost:8080/mobileMashup/ontologies/Process.owl"/>
+    </owl:Ontology>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.daml.org/services/owl-s/1.2/Process.owl#hasInput -->
+
+    <owl:ObjectProperty rdf:about="&Process;hasInput"/>
+    
+
+
+    <!-- http://www.daml.org/services/owl-s/1.2/Process.owl#hasOutput -->
+
+    <owl:ObjectProperty rdf:about="&Process;hasOutput"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Data properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.daml.org/services/owl-s/1.2/Process.owl#parameterType -->
+
+    <owl:DatatypeProperty rdf:about="&Process;parameterType"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.daml.org/services/owl-s/1.2/Process.owl#AtomicProcess -->
+
+    <owl:Class rdf:about="&Process;AtomicProcess"/>
+    
+
+
+    <!-- http://www.daml.org/services/owl-s/1.2/Process.owl#Input -->
+
+    <owl:Class rdf:about="&Process;Input"/>
+    
+
+
+    <!-- http://www.daml.org/services/owl-s/1.2/Process.owl#Output -->
+
+    <owl:Class rdf:about="&Process;Output"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Individuals
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.dart.zju.edu.cn/ontologies/webservices/DianpingProcess.owl#getShopInfoProcess -->
+
+    <owl:NamedIndividual rdf:about="&DianpingProcess;getShopInfoProcess">
+        <rdf:type rdf:resource="&Process;AtomicProcess"/>
+        <Process:hasInput rdf:resource="&DianpingProcess;lat"/>
+        <Process:hasOutput rdf:resource="&DianpingProcess;latitude"/>
+        <Process:hasInput rdf:resource="&DianpingProcess;lng"/>
+        <Process:hasOutput rdf:resource="&DianpingProcess;longitude"/>
+        <Process:hasInput rdf:resource="&DianpingProcess;rang"/>
+        <Process:hasOutput rdf:resource="&DianpingProcess;radius"/>
+        <Process:hasOutput rdf:resource="&DianpingProcess;name"/>
+        <Process:hasOutput rdf:resource="&DianpingProcess;price"/>
+        <Process:hasOutput rdf:resource="&DianpingProcess;tag"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.dart.zju.edu.cn/ontologies/webservices/DianpingProcess.owl#lat -->
+
+    <owl:NamedIndividual rdf:about="&DianpingProcess;lat">
+        <rdf:type rdf:resource="&Process;Input"/>
+        <Process:parameterType rdf:datatype="&xsd;anyURI">http://www.dart.zju.edu.cn/ontologies/webservices/Concepts.owl#Latitude</Process:parameterType>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.dart.zju.edu.cn/ontologies/webservices/DianpingProcess.owl#latitude -->
+
+    <owl:NamedIndividual rdf:about="&DianpingProcess;latitude">
+        <rdf:type rdf:resource="&Process;Output"/>
+        <Process:parameterType rdf:datatype="&xsd;anyURI">http://www.dart.zju.edu.cn/ontologies/webservices/Concepts.owl#Latitude</Process:parameterType>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.dart.zju.edu.cn/ontologies/webservices/DianpingProcess.owl#lng -->
+
+    <owl:NamedIndividual rdf:about="&DianpingProcess;lng">
+        <rdf:type rdf:resource="&Process;Input"/>
+        <Process:parameterType rdf:datatype="&xsd;anyURI">http://www.dart.zju.edu.cn/ontologies/webservices/Concepts.owl#Longitude</Process:parameterType>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.dart.zju.edu.cn/ontologies/webservices/DianpingProcess.owl#longitude -->
+
+    <owl:NamedIndividual rdf:about="&DianpingProcess;longitude">
+        <rdf:type rdf:resource="&Process;Output"/>
+        <Process:parameterType rdf:datatype="&xsd;anyURI">http://www.dart.zju.edu.cn/ontologies/webservices/Concepts.owl#Longitude</Process:parameterType>
+    </owl:NamedIndividual>
+    
+    
+
+
+    <!-- http://www.dart.zju.edu.cn/ontologies/webservices/DianpingProcess.owl#rang -->
+
+    <owl:NamedIndividual rdf:about="&DianpingProcess;rang">
+        <rdf:type rdf:resource="&Process;Input"/>
+        <Process:parameterType rdf:datatype="&xsd;anyURI">http://www.dart.zju.edu.cn/ontologies/webservices/Concepts.owl#Integer</Process:parameterType>
+    </owl:NamedIndividual>
+    
+
+    
+
+
+    <!-- http://www.dart.zju.edu.cn/ontologies/webservices/DianpingProcess.owl#radius -->
+
+    <owl:NamedIndividual rdf:about="&DianpingProcess;radius">
+        <rdf:type rdf:resource="&Process;Output"/>
+        <Process:parameterType rdf:datatype="&xsd;anyURI">http://www.dart.zju.edu.cn/ontologies/webservices/Concepts.owl#Integer</Process:parameterType>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.dart.zju.edu.cn/ontologies/webservices/DianpingProcess.owl#name -->
+
+    <owl:NamedIndividual rdf:about="&DianpingProcess;name">
+        <rdf:type rdf:resource="&Process;Output"/>
+        <Process:parameterType rdf:datatype="&xsd;anyURI">http://www.dart.zju.edu.cn/ontologies/webservices/Concepts.owl#Text</Process:parameterType>
+    </owl:NamedIndividual>
+
+    <!-- http://www.dart.zju.edu.cn/ontologies/webservices/DianpingProcess.owl#price -->
+
+    <owl:NamedIndividual rdf:about="&DianpingProcess;price">
+        <rdf:type rdf:resource="&Process;Output"/>
+        <Process:parameterType rdf:datatype="&xsd;anyURI">http://www.dart.zju.edu.cn/ontologies/webservices/Concepts.owl#Text</Process:parameterType>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.dart.zju.edu.cn/ontologies/webservices/DianpingProcess.owl#tag -->
+
+    <owl:NamedIndividual rdf:about="&DianpingProcess;tag">
+        <rdf:type rdf:resource="&Process;Output"/>
+        <Process:parameterType rdf:datatype="&xsd;anyURI">http://www.dart.zju.edu.cn/ontologies/webservices/Concepts.owl#Text</Process:parameterType>
+    </owl:NamedIndividual>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 3.1.0.1602) http://owlapi.sourceforge.net -->
+

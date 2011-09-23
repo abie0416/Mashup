@@ -1,0 +1,71 @@
+<Pages>
+	<Page page-name="Initialization" page-color="40 40 40"
+		page-width="400" page-infullview="yes" page-drawer="Initialization">
+		<PageBlocks>
+			<Block id="115" genus-name="set-status">
+				<Location>
+					<X>205</X>
+					<Y>108</Y>
+				</Location>
+				<BeforeBlockId>107</BeforeBlockId>
+				<Sockets num-sockets="1">
+					<BlockConnector connector-kind="socket"
+						connector-type="string" init-type="string" label=""
+						position-type="single">
+					</BlockConnector>
+				</Sockets>
+			</Block>
+			<Block id="113" genus-name="say">
+				<Location>
+					<X>206</X>
+					<Y>67</Y>
+				</Location>
+				<BeforeBlockId>107</BeforeBlockId>
+				<Sockets num-sockets="1">
+					<BlockConnector connector-kind="socket"
+						connector-type="poly" init-type="poly" label=""
+						position-type="single">
+					</BlockConnector>
+				</Sockets>
+			</Block>
+			<Block id="109" genus-name="keyboard-up">
+				<Location>
+					<X>209</X>
+					<Y>38</Y>
+				</Location>
+				<Plug>
+					<BlockConnector connector-kind="plug"
+						connector-type="boolean" init-type="boolean" label=""
+						position-type="mirror" con-block-id="107">
+					</BlockConnector>
+				</Plug>
+			</Block>
+			<Block id="107" genus-name="ifelse">
+				<Location>
+					<X>127</X>
+					<Y>35</Y>
+				</Location>
+				<Sockets num-sockets="3">
+					<BlockConnector connector-kind="socket"
+						connector-type="boolean" init-type="boolean" label="test"
+						position-type="single" con-block-id="109">
+					</BlockConnector>
+					<BlockConnector connector-kind="socket"
+						connector-type="cmd" init-type="cmd" label="then"
+						position-type="single" con-block-id="113">
+					</BlockConnector>
+					<BlockConnector connector-kind="socket"
+						connector-type="cmd" init-type="cmd" label="else"
+						position-type="single" con-block-id="115">
+					</BlockConnector>
+				</Sockets>
+			</Block>
+		</PageBlocks>
+	</Page>
+	<Page page-name="Event Handling" page-color="30 30 30"
+		page-width="800" page-infullview="yes" page-drawer="Event Handling">
+	</Page>
+	<Page page-name="On Exit" page-color="40 40 40" page-width="400"
+		page-infullview="yes" page-drawer="On Exit">
+	</Page>
+</Pages>

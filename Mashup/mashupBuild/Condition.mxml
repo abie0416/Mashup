@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:TitleWindow xmlns:mx="http://www.adobe.com/2006/mxml" backgroundColor="white" width="600" height="400"
+	 title="Condition Seting..."
+		verticalAlign="middle" horizontalAlign="center" 
+		borderColor="#333333" paddingBottom="5" horizontalGap="5">
+<mx:Metadata>
+	[Event(name="saveConditon", type = "flash.events.Event")]
+	[Event(name="cancelConditon", type = "flash.events.Event")]
+	[Event(name="VariableforUserInput", type = "flash.events.Event")]
+</mx:Metadata>
+	<mx:Script>
+		<![CDATA[
+			
+				import mx.managers.PopUpManager;
+				
+				private function SaveMe():void{
+					dispatchEvent(new Event("saveConditon"));
+//					closeMe();
+				}
+				private function closeMe():void{
+					trace ("closeMe")
+					dispatchEvent(new Event("cancelConditon"));
+					
+				}
+				private function Variable_for_UserInput():void{
+					dispatchEvent(new Event("VariableforUserInput"));
+				}
+		]]>
+	</mx:Script>
+	<mx:VBox x="242" y="154" width="100%" height="80%" horizontalAlign="center" verticalAlign="top" top="5">
+			<mx:HBox  id="mainPanel" x="242" y="154" width="100%" height="80%" horizontalAlign="center" verticalAlign="top" top="5">
+					<mx:VBox width="15%" height="100%" horizontalAlign="center" verticalAlign="top" top="3">
+								<mx:Label text="Label" textAlign="center" width="100%" height="15"/>
+								<mx:VBox id="labelVbox" width="100%" height="100%" horizontalAlign="center" verticalAlign="top" />
+					</mx:VBox>
+					<mx:VBox  width="20%" height="100%" horizontalAlign="center" verticalAlign="top" top="3">
+								<mx:Label text="Parameter" textAlign="center" width="100%" height="15"/>
+								<mx:VBox id="paraVbox" width="100%" height="100%" horizontalAlign="center" verticalAlign="top" />
+					</mx:VBox>
+					<mx:VBox width="20%" height="100%" horizontalAlign="center" verticalAlign="top" top="3">
+								<mx:Label text="Symbol" textAlign="center" width="100%" height="15"/>
+								<mx:VBox id="sysVbox" width="100%" height="100%" horizontalAlign="center" verticalAlign="top" />
+					</mx:VBox>
+					<mx:VBox  width="30%" height="100%" horizontalAlign="center" verticalAlign="top" top="3">
+								<mx:Label text="Condition" textAlign="center" width="100%" height="15"/>
+								<mx:VBox id="textInputVbox" width="100%" height="100%" horizontalAlign="center" verticalAlign="top" />
+					</mx:VBox>
+					<mx:VBox width="15%" height="100%" horizontalAlign="center" verticalAlign="top" top="3">
+								<mx:Label text="Add" textAlign="center" width="100%" height="15"/>
+								<mx:VBox  id="AddVbox" width="100%" height="100%" horizontalAlign="center" verticalAlign="top" />
+					</mx:VBox>
+			</mx:HBox>
+			<mx:HBox id="textArea" width="100%" height="20%">
+				<mx:Label text="Condition Combine..." width="15%"/>
+				<mx:TextArea id="conditionExpression" width="85%" height="100%">
+					 
+				</mx:TextArea>
+			</mx:HBox>
+	</mx:VBox>
+		<mx:HBox  width="100%" height="20%" verticalAlign="middle" horizontalAlign="center">
+			<mx:Button label="Save" click="SaveMe()"/>
+			<mx:Button label="Cancel" click="closeMe()"/>
+			<mx:Button label="Variable for UserInput" right="10" bottom="0" click="Variable_for_UserInput()"/>
+			
+		</mx:HBox>
+		
+</mx:TitleWindow>

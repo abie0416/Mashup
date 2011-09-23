@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Application xmlns:mx="http://www.adobe.com/2006/mxml" xmlns="*"
+	xmlns:appView = "appView.*"
+    layout="absolute"
+    preinitialize="loadStyle()"
+    creationComplete="startService()"
+    pageTitle="Mashup-based Mobile App Inventor" visible="true" horizontalAlign="center" xmlns:mashupBuilder="mashupBuilder.*" xmlns:mashupBuild="mashupBuild.*">
+
+    <mx:Script>
+    <![CDATA[
+    	import mashupBuild.Controls;
+    	import mx.containers.Canvas;
+    	import mashupBuild.Ravis;
+    	import mx.controls.Alert; 
+    	import mx.collections.Sort;
+    	import mx.collections.SortField;
+    	import dart.mashup.mashup.ModeListEvent;
+    	import dart.mashup.tile.Tile;
+        import mx.collections.IViewCursor;
+        import mx.collections.ArrayCollection;
+        import mx.rpc.events.ResultEvent;
+        import mx.events.StyleEvent;
+        import mx.styles.StyleManager;
+        import flash.ui.ContextMenu;
+        import flash.ui.ContextMenuItem;
+        import flash.events.ContextMenuEvent;
+        import mx.managers.CursorManager;
+        import appSource.AppViewManager;
+        import org.un.cava.birdeye.ravis.graphLayout.data.INode;
+
+        [Bindable]
+        private var catalog:ArrayCollection;
+        [Bindable]
+        private var tileCatalog:ArrayCollection;
+        [Bindable]
+        private var mashupAppCatalog:ArrayCollection;
+        [Bindable]
+        private var classArr:Array ;
+
+        private var currentTheme:String = "blue"; //默认的风格成这样吧
+        
+        public static var xml:XML;
+
+
+        private function toggleTheme():void
+        {
+            if (currentTheme == "beige")
+            {
+                currentTheme = "blue";
+            }
+            else
+            {
+                currentTheme = "beige";
+            }
+
+            loadStyle();
+        }
+
+        private function startService():void
+        {
+            mashupBuilder.send();
+        }
+	
+        private function loadStyle():void
+        {
+            var eventDispatcher:IEventDispatcher =
+                StyleManager.loadStyleDeclarations(currentTheme + ".swf");
+            eventDispatcher.addEventListener(StyleEvent.COMPLETE, completeHandler);
+        }
+
+        private function completeHandler(event:StyleEvent):void
+        {
+            image.source = acb.getStyle("storeLogo");
+            //homeView.updateMapImage();
+            super.initialized = true;
+        }
+
+        
+        private function mashupBuilderResultHandler(event:ResultEvent):void{
+        	xml = event.result as XML;
+        	var xmldata:XML =	 <concept name="USERINPUT.UserInput"/>;        	
+        	Ravis.xmldata = xmldata;
+        	
+        	this["mashupBuildList"]["ravis"].init();
+           
+        	this["mashupBuildList"]["uiMotify"].init();
+        }
+        
+		private function changeParas(mode:String):void
+		{
+			if(mode == "fullscreen"){
+				vBox.percentHeight = vBox.percentWidth = 100;
+		//		vBox.removeChild(acb);
+			}
+			else{
+		//		vBox.addChildAt(acb, 0);
+				//vBox.addChild(acb);
+				vBox.width = 990;
+				vBox.height = 600;
+			}
+		}  
+        
+        override public function set initialized(value:Boolean):void
+        {
+            // Hold off until the Runtime CSS SWF is done loading.
+            //    <--mx:HTTPService id="tileService" url="http://10.214.33.218:8080/mashup/data/tile.xml"
+        //result="tileServiceResultHandler(event)"/-->
+        }
+        
+        /**
+         * when panel changes to appView, update the AppViewManager.serviceOutputs.
+         * */
+        public function panelChanged(event:mx.events.IndexChangedEvent):void
+        {
+        	if(event.newIndex == 1)
+        	{
+        		AppViewManager.serviceOutputs.removeAll();
+        		for each(var node:INode in this["mashupBuildList"]["totalBox"].getChildAt(1)["vgraph"].graph.nodes)
+        		{
+        			for(var key:String in node.outputs)
+        			{
+        				AppViewManager.serviceOutputs.addItem(node.stringid+"."+key+"("+node.name+")");
+        			}
+        		}
+        	}
+        }
+    ]]>
+    </mx:Script> 
+
+    <mx:Style source="css/main.css"/> 
+
+	<mx:HTTPService id="mashupBuilder" url="http://localhost:8080/mobileMashup/allServices" resultFormat="e4x"
+        result="mashupBuilderResultHandler(event)" /> 
+    <mx:VBox id="vBox" width="100%" height="100%" paddingLeft="0" paddingRight="0" horizontalCenter="0" >
+
+        <mx:ApplicationControlBar width="100%" styleName="storeControlBar" id="acb">
+            <mx:Image id="image" 
+                      click="toggleTheme()"
+                      toolTip="Change Theme"/>
+            <mx:ToggleButtonBar  
+                height="100%"
+                dataProvider="{mashupViews}"
+                styleName="storeButtonBar"/>
+        </mx:ApplicationControlBar>
+
+        <!-- using a creationPolicy of "auto" or "queued" has a bug at time of writing
+             that prevents initial states from applying styles correctly.
+             plus the instantiation of the cart view can cause a performance
+             hiccup which we might prefer at startup -->
+        <mx:ViewStack id="mashupViews" width="100%" height="100%" creationPolicy="all" change="panelChanged(event)">  
+             <mashupBuild:buildList name="mashupBuild" id="mashupBuildList" label="Mashup-based Mobile App Inventor" showEffect="WipeDown" hideEffect="WipeUp" />
+            <appView:AppContructionView name="appViewer" id="appViewer" label="API Schema Editor" showEffect="WipeDown" hideEffect="WipeUp"  />
+        </mx:ViewStack>    
+         
+    </mx:VBox>        
+
+</mx:Application>    

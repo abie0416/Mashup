@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Canvas xmlns:mx="http://www.adobe.com/2006/mxml"  width="100%" height="100%" xmlns:mashupBuild="mashupBuild.*" xmlns:ui="org.un.cava.birdeye.ravis.components.ui.*">
+<mx:Script>
+	<![CDATA[
+	    
+	  	private var flag:Boolean = false;
+		private function act(e:Event):void{
+			if(flag)	{
+				viewStack.selectedIndex =0;
+				flag = false;
+			}else{
+				viewStack.selectedIndex = 1;
+				flag = true;
+			}
+		}
+	]]>
+</mx:Script>
+	<mx:HBox id="totalBox" name= "hbox" width="100%" height="100%" verticalAlign="middle">
+		<mx:HDividedBox  id="uiMotifybox" width="300" height="100%" visible="true">
+			<mx:HBox id="DivNavRB" width="100%" height="100%" horizontalGap="5" >
+				<mx:HBox id="sideBar" width="100%" height="100%" horizontalGap="0">
+                    <ui:Grip id="navGrip" 
+                        width="17" height="100%" horizontalAlign="center"
+                        gripTip="Show/Hide Control Panel" />						
+					<mx:VBox id="view" width="100%" height="100%" >		
+						<mx:ViewStack id="viewStack" width="100%" height="100%"  >
+							<mashupBuild:uiMotify id="uiMotify" width="100%" height="100%" />
+							<mashupBuild:Controls id="controls" width="100%" height="100%"/>	
+						</mx:ViewStack>	
+						<mx:HBox  horizontalAlign="right" width="100%">
+							<mx:Button id="Change" label="Panel Change" click="act(event)" />
+						</mx:HBox>	
+						
+					</mx:VBox>
+			 </mx:HBox>
+		</mx:HBox>
+								
+		</mx:HDividedBox>
+			<!--mashupBuild:Controls id="Controls" width="400" height="100%"/-->	
+		    <mashupBuild:Ravis id="ravis" name="ravises" width="100%" height="100%"/>				    			
+
+	</mx:HBox>
+	 <mx:states>
+        <mx:State name="showCntrlPanel">
+            <mx:SetProperty target="{sideBar}" name="width" value="300" />
+            <mx:SetProperty target="{uiMotifybox}" name="width" value="300"/>
+            <mx:SetStyle target="{DivNavRB}" name="horizontalGap" value="5" />
+            
+        </mx:State>        
+        <mx:State name="hideCntrlPanel">
+            <mx:SetProperty target="{sideBar}" name="width" value="17" />
+            <mx:SetProperty target="{uiMotifybox}" name="width" value="17"/>
+            <mx:SetStyle target="{DivNavRB}" name="horizontalGap" value="0" />
+        </mx:State>
+    </mx:states>
+    <mx:transitions>
+        <mx:Transition fromState="*" toState="*">
+            <mx:Resize target="{sideBar}" />
+        </mx:Transition>
+    </mx:transitions>
+ </mx:Canvas>

@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="2.5" xmlns="http://java.sun.com/xml/ns/javaee"
+ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee   http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
+ 
+ 	<listener>
+		<listener-class>
+			dart.mobilemashup.listener.SessionListener
+		</listener-class>
+	</listener>
+	<listener>
+		<listener-class>
+			dart.mobilemashup.listener.ApplicationListener
+		</listener-class>
+	</listener>
+ 
+	<servlet>
+		 <servlet-name>MobileParaServlet</servlet-name>
+		 <servlet-class>dart.mobilemashup.servlet.MobileParaServlet</servlet-class>
+	</servlet>
+	<servlet>
+		 <servlet-name>MashupServlet</servlet-name>
+		 <servlet-class>dart.mobilemashup.servlet.MashupServlet</servlet-class>
+	</servlet>
+	<servlet>
+		 <servlet-name>ComplierServlet</servlet-name>
+		 <servlet-class>dart.mobilemashup.servlet.ComplierServlet</servlet-class>
+	</servlet>
+	<servlet>
+		 <servlet-name>MatchedServicesServlet</servlet-name>
+		 <servlet-class>dart.mobilemashup.servlet.MatchedServicesServlet</servlet-class>
+	</servlet>
+	<servlet>
+		 <servlet-name>AllServicesServlet</servlet-name>
+		 <servlet-class>dart.mobilemashup.servlet.AllServicesServlet</servlet-class>
+	</servlet>
+	<servlet>
+		 <servlet-name>ParaConfigServlet</servlet-name>
+		 <servlet-class>dart.mobilemashup.servlet.ParaConfigServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		 <servlet-name>MobileParaServlet</servlet-name>
+		 <url-pattern>/mobilePara</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		 <servlet-name>MashupServlet</servlet-name>
+		 <url-pattern>/mashup</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		 <servlet-name>ComplierServlet</servlet-name>
+		 <url-pattern>/complier</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		 <servlet-name>MatchedServicesServlet</servlet-name>
+		 <url-pattern>/matchedServices</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		 <servlet-name>AllServicesServlet</servlet-name>
+		 <url-pattern>/allServices</url-pattern>
+	</servlet-mapping>
+		<servlet-mapping>
+		 <servlet-name>ParaConfigServlet</servlet-name>
+		 <url-pattern>/paraConfig</url-pattern>
+	</servlet-mapping>
+	
+	 <session-config>
+	  <session-timeout>20</session-timeout>
+	 </session-config>
+ 
+	 <welcome-file-list>
+	  <welcome-file>index.jsp</welcome-file>
+	 </welcome-file-list>
+ 
+</web-app>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Canvas xmlns:mx="http://www.adobe.com/2006/mxml">
+<mx:Script>
+	<![CDATA[
+				import mashupBuild.Ravis;
+				import org.un.cava.birdeye.ravis.graphLayout.visual.VisualGraph;
+				import mx.containers.HBox;
+				private var _vgraph:VisualGraph;
+				
+				
+//				private function init(){
+//							var build:Canvas = this.parentApplication.mashupViews.getChildByName("mashupBuild") as Canvas; 
+//				     		var hbox:HBox = build.getChildByName("hbox") as HBox;		
+//				     		var ravis:Ravis = hbox.getChildAt(0) as Ravis;
+//				     		vgraph = ravis.vgraph;
+//				}
+			public function set vgraph(vgraph:VisualGraph):void{
+							_vgraph= vgraph;
+			}
+				
+			private function removeEdgeEdit():void{
+					_vgraph.removeRavisEdge();
+			}
+			
+			private function addEdgeEdit():void{
+				 			_vgraph.addEdge();
+			}
+		
+			private function SaveMashup():void{
+		  	 	_vgraph.saveAll();
+		  }
+				
+	]]>
+</mx:Script>
+				<mx:HBox horizontalGap="8" horizontalAlign="right" width="100%" height="100%">
+					<mx:Button id="Save" label="Save"  click="SaveMashup()" styleName="buttonStyle"/>
+					<mx:Button id="addEdge"  label="addEdge" click="addEdgeEdit()" styleName="buttonStyle" />
+					<mx:Button id="removeEdge"  label="removeEdge"  click="removeEdgeEdit()"  styleName="buttonStyle"/>	
+			</mx:HBox>	
+</mx:Canvas>

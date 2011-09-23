@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<mx:Canvas xmlns:mx="http://www.adobe.com/2006/mxml" width="100%" height="100%" backgroundColor="white"
+	 creationComplete="init()">
+  
+    <mx:Script>
+        <![CDATA[
+        	import mx.events.ListEvent;
+        	import mx.controls.Alert;
+            import appSource.Displayer;
+            import appSource.AppViewManager;
+            import mx.collections.ArrayCollection;
+            
+          	public  var testPerson:String = "good day";
+          	
+//          	public var Data:ArrayCollection = new ArrayCollection();
+
+            [Bindable]
+            private var people:ArrayCollection = new ArrayCollection([
+                    new Displayer(testPerson, AppViewManager.treeData)
+            ]);
+            
+            public function Refresh(event:ListEvent):void{
+            	//Alert.show("It's refreshing");
+            	personsTree.invalidateList();
+            	
+            }
+            public function init():void{
+
+//				 arrayCollection.itemUpdated(ControlDragManager.treeData);
+//                 arrayCollection.dispatchEvent(new CollectionEvent(CollectionEvent.COLLECTION_CHANGE, false, false, CollectionEventKind.ADD, -1, -1, [ControlDragManager.treeData]));
+
+//          		
+//          		
+           }    
+//            private function refreshData():void{
+//                //reset the root node to its original unfiltered data
+//                people[0].children = new ArrayCollection(people[0].children.source);
+//                //start the recursion at the root node
+//                refreshRecursiveChildren(people.source[0]);
+//                //update the Tree after the data has been filtered
+//                personsTree.invalidateList();
+//            }//end refreshData function
+//            
+//            private function refreshRecursiveChildren(person:Displayer):void{
+//                if(person.children){
+//                    //loop through each child and filter its children
+//                    for each(var _person:Displayer in person.children.source){
+//                        refreshRecursiveChildren(_person);
+//                    }
+//                    //reset each "children" ArrayCollection to its original unfiltered data
+//                    person.children = new ArrayCollection(person.children.source);
+//                    //set the filterfunction for the newly updated node
+//                    person.children.filterFunction = filterData;
+//                    //run the fitlerFunction
+//                    person.children.refresh();
+//                }
+//            }//end refreshRecursiveChildren function
+//            
+//            public function filterData(item:Object):Boolean{
+//                //get the string to filter the nodes by
+//                var searchString:String = iNameFilter.text;
+//                //if string is found in node return true.
+//                //since the recursive filtering takes place from bottom up, if
+//                //a collection still has children after filtering, also return true
+//                if(searchString.length == 0 || item.name.toLowerCase().indexOf(searchString.toLowerCase()) >= 0)
+//                    return true;
+//                else if(item.children != null && item.children.length > 0)
+//                    return true;
+//                    
+//                return false;
+//            }//end filterData function
+        
+        ]]>
+    </mx:Script>
+    
+   
+        <mx:Tree id="personsTree" dataProvider="{people}" change="Refresh(event)" labelField="name" width="100%" height="100%" />
+
+</mx:Canvas>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<mx:VBox xmlns:mx="http://www.adobe.com/2006/mxml" width="35" height="116" 
+    paddingTop="10" horizontalAlign="center"  backgroundColor="#403F3F" backgroundAlpha="0.8" verticalGap="7">
+    
+    <mx:Metadata>
+    [Event(name="showMashupableAPI", type="dart.mashup.mashup.TpToolBarTypeEvent")]
+    [Event(name="hideMashupableAPI", type="dart.mashup.mashup.TpToolBarTypeEvent")]
+    [Event(name="recommendation", type="dart.mashup.mashup.TpToolBarTypeEvent")]
+    [Event(name="inspire", type="dart.mashup.mashup.TpToolBarTypeEvent")]
+    [Event(name="center", type="dart.mashup.mashup.TpToolBarTypeEvent")]
+    </mx:Metadata>
+        
+    <mx:Script>
+        <![CDATA[
+  			import dart.mashup.mashup.TpToolBarTypeEvent;
+        ]]>
+    </mx:Script>
+       <mx:LinkButton id="btnShowInfo" icon="@Embed('/assets/information1.gif')" 
+            width="25" click="dispatchEvent(new TpToolBarTypeEvent(TpToolBarTypeEvent.INFO))" toolTip="Show Recomendation"/>     
+   
+    <mx:LinkButton id="btnHideAPI" icon="@Embed('/assets/delete.gif')" 
+            width="25" click="dispatchEvent(new TpToolBarTypeEvent(TpToolBarTypeEvent.HIDE))" toolTip="Remove Node"/>
+     <mx:LinkButton id="btnShowAPI" icon="@Embed('/assets/add.gif')" 
+            width="25" click="dispatchEvent(new TpToolBarTypeEvent(TpToolBarTypeEvent.SHOW))"  toolTip="show the result mashup graph"/>             
+    <!--mx:LinkButton id="btnInspire" icon="@Embed('/assets/inspire.gif')" 
+            width="25" click="dispatchEvent(new TpToolBarTypeEvent(TpToolBarTypeEvent.INSPIRE))" toolTip="Want some inspiration?"/-->      
+</mx:VBox>

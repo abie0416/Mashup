@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Canvas xmlns:mx="http://www.adobe.com/2006/mxml" xmlns="*" 
+	xmlns:primitive="org.un.cava.birdeye.ravis.assets.icons.primitives.*"
+	 xmlns:mashupBuild="mashupBuild.*"
+	initialize="namedeal()"
+	creationComplete="setNodeCircle()"
+	>
+
+	<!-- This a basic circle itemRenderer for a node.
+		 The color is by a given xml parameter -->
+	
+	<mx:VBox verticalAlign="bottom" horizontalAlign="center" verticalGap="0"  width="90" height="60">
+	<mx:Spacer height="2" />
+	<primitive:Circle id="circle" 
+            /> <!--toolTip="{XML(this.data.data).@name}"-->
+    <mx:LinkButton id="nodeText"  width="90" height="15"  color="green" click="showDetails(event)" />
+    			<!--label="{XML(this.data.data).@name}"-->
+	</mx:VBox>
+	
+	<mx:Script>
+		<![CDATA[
+			import mx.controls.Alert;
+			import mashupBuild.Ravis;
+			
+  	private var fillColorArr:Array = new Array(0xFF9900, 0x993399, 0xFF0099, 0x6600FF, 0xFF6666, 0x00CC33, 0x33CC00, 0x993366, 0xffff00, 0x330099 );
+   private var fillSizeArr:Array = new Array(15,17, 18,21,23,25,28,35,44,70);
+   private var lineColorArr:Array = new Array(0x000CCC, 0xFF33FF, 0xFF3366, 0x0000FF, 0xFF0000, 0x33FF00, 0x00FF00, 0xFFFF33, 0xffff00, 0xFFCC00);
+	private var displayName:String ="";
+	
+	private function namedeal():void{
+		   var nameTemp:String =this.data.data.@name;
+		   var arr:Array = nameTemp.split("_");
+		   if(arr.length>1){
+					displayName = arr[0];
+		   }else{
+		   			displayName = nameTemp;
+		   }
+		   			circle.toolTip= displayName;
+		   			nodeText.label = displayName;
+		   			
+	}
+		
+			private function setNodeCircle():void {		
+				
+			var index:int;			
+			if(XML(this.data.data).@flag== 1){
+				// node of class
+				index = 9;
+			}
+			else if(XML(this.data.data).@flag== 0){
+				//node of leaf
+				index = 6;
+			}
+			else if(XML(this.data.data).@flag== 2){
+				//node of has been added
+				index =8;
+			}
+			else if (XML(this.data.data).@flag== 3){
+				//node of focused
+				index =7;
+			}
+//			mx.controls.Alert.show("I am drawing node");
+			var nodeColor:int = fillColorArr[index];//this.data.data.@nodeColor;
+			var nodeSize:int = fillSizeArr[index];//this.data.data.@nodeSize;
+			circle.color=nodeColor;
+			circle.width=nodeSize;
+			circle.height=nodeSize;
+			circle.bordColor = lineColorArr[index];
+   			}
+   					
+	
+   			private function showDetails(event:Event):void{
+   				
+   				parentDocument.nodeID.text=this.data.data.@id;
+   				parentDocument.nodeName.text=displayName;//this.data.data.@name;
+//   				parentDocument.nodeDesc.text=this.data.data.@desc;
+   			}
+		]]>
+	</mx:Script>	
+</mx:Canvas>

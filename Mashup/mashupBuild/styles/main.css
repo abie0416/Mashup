@@ -1,0 +1,73 @@
+@font-face
+{
+    src: url("assets/fonts/MyriadWebPro.ttf");
+    font-family: main;
+    font-style: normal;
+    font-weight: normal;
+    
+}
+
+@font-face
+{
+    src: url("assets/fonts/MyriadWebPro-Bold.ttf");
+    font-family: main;  
+    font-style: normal;
+    font-weight: bold;
+}
+
+
+Application {
+	font-family: main;
+	font-size: 10;
+    background-color:#AAB2B7;
+
+}
+
+.linkButtonWindowShade {
+	      	headerClass:ClassReference('mx.controls.LinkButton');
+	      	header-style-name: linkButtonStyle;
+	     
+	     	drop-shadow-enabled:true;
+	     	
+	      	corner-radius:5;
+	      	border-style:solid;
+	    	
+	    	background-color:#CCCCCC;
+	    	background-alpha:.7;
+	    }         
+
+.linkButtonStyle {
+	    	corner-radius:5;	
+	    	fill-alphas:1,1;
+	    	padding-left:10;
+	    	rollOverColor: #666666;
+	    	textRollOverColor: #ffffff;
+	    }
+
+ToolTip {
+   			backgroundAlpha: 0.85;
+   			backgroundColor: #111111;
+   			color: #ffffff;
+   			font-family: main;
+			font-size:10;
+			
+}
+
+
+        
+  .buttonStyle {
+    borderColor:		    #767473;
+    fillAlphas: 		    .60, .60, .60, .60;
+    fillColors: 		    #888888, #F3F3F3, #9E9E9E, #FCFCFC;
+    highlightAlphas:	    .07, .45;
+}
+
+Label{
+	 color: #00ff00;
+}
+
+
+
+
+
+

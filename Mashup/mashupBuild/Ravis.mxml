@@ -1,0 +1,332 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Canvas xmlns:mx="http://www.adobe.com/2006/mxml"
+	xmlns:ravis="org.un.cava.birdeye.ravis.graphLayout.visual.*"
+	xmlns:controls="org.un.cava.birdeye.ravis.components.ui.controls.vgraphControls.*"
+	xmlns:flexlib="http://code.google.com/p/flexlib/"
+	creationComplete="_init()"  width="100%" height="100%" xmlns:mashupBuild="mashupBuild.*">
+
+<!--
+DEMO LEVEL 2:
+The purpose of this demo is to explain the creating a simple graph with controls and events.
+
+From LEVEL 1
+1.) Using an XML data source
+2.) Initiating a graph
+3.) Setting a layouter
+
+LEVEL 2
+4.) Setting an edge line style parameter (color) based on data
+5.) Specifying a node renderer (colorSizeNodeRenderer.mxml) which will color and size based on data
+6.) Customizing an edge label
+
+LEVEL 3
+7.) Degrees of Separation Control
+8.) Node click, show details event
+-->
+
+	<mx:Script>
+		<![CDATA[
+			import appSource.AppViewManager;
+			import mx.core.UIComponent;
+			import mx.collections.ArrayCollection;
+			import org.un.cava.birdeye.ravis.graphLayout.visual.IVisualEdge;
+			import mx.controls.Alert;
+			import mx.rpc.events.ResultEvent;
+			import mx.rpc.http.HTTPService;
+			import mx.containers.HBox;
+			import mx.managers.PopUpManager;
+			
+			
+       		import org.un.cava.birdeye.ravis.graphLayout.data.INode;
+			import org.un.cava.birdeye.ravis.graphLayout.data.IGraph;
+			import org.un.cava.birdeye.ravis.graphLayout.data.Graph;			
+			import org.un.cava.birdeye.ravis.graphLayout.visual.VisualNode;
+			import org.un.cava.birdeye.ravis.graphLayout.visual.IVisualNode;
+			import org.un.cava.birdeye.ravis.graphLayout.visual.IVisualGraph;
+			import org.un.cava.birdeye.ravis.graphLayout.visual.IEdgeRenderer;
+			import org.un.cava.birdeye.ravis.graphLayout.layout.ILayoutAlgorithm;
+			import org.un.cava.birdeye.ravis.graphLayout.layout.ConcentricRadialLayouter;
+			import org.un.cava.birdeye.ravis.graphLayout.visual.edgeRenderers.DirectedBalloonEdgeRenderer;
+			import org.un.cava.birdeye.ravis.graphLayout.visual.VisualGraph;
+		
+			// These are the item renderers
+			import mashupBuild.renderers.nodes.mxml.eventNodeRenderer;
+			import mashupBuild.renderers.edgelabels.mxml.shapeEdgeLabelRenderer;
+			import mashupBuild.uiMotify;
+			
+			// graph datastructure object
+			private  var graph:IGraph;
+			// active layouter
+			 private var layouter:ILayoutAlgorithm;
+			// edge renderer
+			private var selectedEdgeRenderer:IEdgeRenderer;
+			// root node to start with
+			private  var startRoot:IVisualNode;
+			
+			private  static var _currentNode:IVisualNode = null;
+			private  	static var _xmldata:XML;
+			private    static  var _controller:Controls = new Controls;
+
+			
+			// this is used to display the number of visible items
+			private var itemCount:int = 0;
+			// important to ensure we are done with the main initialisation
+			private var initDone:Boolean = false;	
+			
+			/*
+			 * event handler for HTTPService, does all the remaining required
+			 * initialisation */
+			public function set currentNodeX(currentNode:IVisualNode):void{
+				_currentNode = currentNode;
+			}
+			
+			public static  function set xmldata(xmldata:XML):void{
+				 _xmldata = xmldata;
+			}
+			
+			private function _init():void{
+									
+//					this.addEventListener(MouseEvent.ROLL_OVER,roll_over);
+					if(_xmldata != null)
+					{
+						if(!initDone)
+							init();
+					}
+			}
+			
+			public function init():void {
+				var build:buildList= buildList(this.parentDocument);
+//				_controller = new controller;
+//				_controller = new Controls();
+			   _controller = build.controls;
+				_controller.vgraph = vgraph;
+				initData();				
+			}
+			
+			private function roll_over(e:MouseEvent):void{							
+//						if(!VisualGraph.mode && e.type == MouseEvent.ROLL_OVER && e.stageX <(this.vgraph.stage.x+20) ){
+//
+//									this.uiMotifybox.visible = true;
+//									this.uiMotifybox.x =this.vgraph.stage.x;
+//									this.uiMotifybox.y =this.vgraph.stage.y;
+//							
+//						}else if(e.type ==MouseEvent.ROLL_OUT){
+//										
+////									this.uiMotifybox.visible = false;
+//						}
+			}
+			
+			  private  function initData():void {			
+			  	var  xmldata:XML = _xmldata;
+				/* init a graph object with the XML data */
+	      		graph = new org.un.cava.birdeye.ravis.graphLayout.data.Graph("XMLAsDocsGraph",true,xmldata);
+	      		
+				/* set the graph in the VGraph object, this automatically
+				 * initializes the VGraph items; 
+				 * note: vgraph is the id of the mxml specified VisualGraph component */
+				vgraph.graph = graph;
+				/* set the default layouter type */
+//				trace(_controller.myLayoutSelector.dataProvider)
+				
+				if(_controller.myLayoutSelector.selectedItem != null)
+					_controller.myLayoutSelector.changeLayouter();
+				else 
+					_controller.myLayoutSelector.selectedItem = "ConcentricRadial";				
+//				vgraph.edgeRenderer = new DirectedBalloonEdgeRenderer(vgraph.edgeDrawGraphics);
+				if(_controller.myEdgeRendererSelector.selectedItem !=null)
+					_controller.myEdgeRendererSelector.changeEdgeRenderer();
+				else 
+					_controller.myEdgeRendererSelector.selectedItem = "DirectedBalloons";
+
+				/* set the visibility limit options, default 2 
+				* a.k.a degrees of separation */
+				_controller.myDegreeOS.updateMaxVisDist();
+				
+				/* select a root node, most layouters requires a root node
+				*  Note: Id 1 is referring to node id in the XML file */
+//				if(VisualGraph.mode ){
+//					startRoot = graph.nodeByStringId("1").vnode;
+//				}else if(_currentNode!=null){
+//					startRoot = graph.nodeByStringId(_currentNode.id.toString()).vnode;
+//				}else{
+					var dic1:Dictionary = Graph(vgraph.graph).getDic1();
+					if(Graph.action =="addNode"){
+								 var lastNode:String = String(Graph.selectedData.getItemAt(Graph.selectedData.length-1));
+								 
+					 			var rootId:String = dic1[lastNode];
+					 			startRoot = graph.nodeByStringId(rootId).vnode;
+					 			//先进入edit模式，再返回来，添加node，肯能回返回null，有bug
+					}else if(Graph.action =="recomend"){
+								var current:String = String(xmldata.@name);								
+								trace(current)
+								var rootId2:String = dic1[current];
+								startRoot = graph.nodeByStringId(rootId2).vnode;
+								
+						
+					}else {					
+								startRoot = graph.nodeByStringId("1").vnode;
+					}
+
+				
+
+				/* set if edge labels should be displayed */
+				vgraph.displayEdgeLabels = true;
+
+				/* the following kicks it off .... */
+				vgraph.currentRootVNode = startRoot;
+				initDone = true;
+				vgraph.draw();
+			}
+			
+			private function nodeRollToolBar(e:MouseEvent):void{
+				
+				if(_currentNode != null &&!VisualGraph.mode){
+						if(e.type == MouseEvent.ROLL_OUT ){
+							tpToolBar.visible = false ;
+						
+						}else{
+							tpToolBar.x = _currentNode.viewX + _currentNode.view.width/1.5 ;
+							tpToolBar.y = _currentNode.viewY - _currentNode.view.height/2;
+							tpToolBar.visible = true;							
+						} 
+				}
+			
+			}
+			private function showMashup():void{
+						trace("showMableAPI");
+						vgraph.showMashup();
+						
+			}
+			private function Recomendation():void{		
+					trace("Recommendation")
+					vgraph.Recomendation(_currentNode);
+           
+        }
+			
+			private function ChangeToEdit():void{
+					VisualGraph.mode = true;
+					Graph.selectedData.addItem("Output_0");
+					Graph.selectedDataChild["Output_0"] = new ArrayCollection;
+					
+					if(Graph.selectedData.length >1){
+					var pre:String = Graph.selectedData.getItemAt(Graph.selectedData.length-2) as String;
+					var temp:ArrayCollection =Graph.selectedDataChild[pre] as ArrayCollection;
+					temp.addItem("Output_0");
+					}
+					vgraph.showMashup();
+			}
+			
+			private function ComeBack():void{
+					VisualGraph.mode = false;
+					
+					var index:int = Graph.selectedData.getItemIndex("Output_0");
+//					trace(index)
+					if(index != -1){
+						Graph.selectedData.removeItemAt(index);
+					var pre:String = Graph.selectedData.getItemAt(Graph.selectedData.length-1) as String;
+					var temp:ArrayCollection = Graph.selectedDataChild[pre] as ArrayCollection;
+					index = 	temp.getItemIndex("Output_0");
+					if(index != -1)
+								temp.removeItemAt(index);
+					}
+					vgraph.showMashup();
+			}
+
+			private function DownLoadManual():void{
+//				var uv:URLVariables = new URLVariables();
+//				
+//	        	uv.mashupString = resultMashup;        
+				var USERMANNUAL:String ="http://localhost:8080/mobileMashup/UserManul.rar";
+	        	var u:URLRequest = new URLRequest(USERMANNUAL);
+//				u.method = "POST";
+//				u.data = uv;
+				
+				/* open a new tab to download the result files.*/
+				navigateToURL(u,"_blank");
+			}
+			private function removeNode():void{
+				if(_currentNode !=null){
+					if(_currentNode.id == 1){
+						mx.controls.Alert.show("This is userInput Node ,can not be deleted!!");
+						return;
+					}
+					var dic3:Dictionary = Graph(vgraph.graph).getDic3();
+					var nodeName:String = this.idToName(_currentNode);
+					
+					if(dic3[nodeName] == 2 || dic3[nodeName] == 3){
+					for (var key:String in Graph.selectedDataChild){
+						if(key == nodeName ){
+							delete Graph.selectedDataChild[key]
+							continue;
+						}else{
+							var index:int = (Graph.selectedDataChild[key] as ArrayCollection).getItemIndex(nodeName);
+							if(index!= -1){
+								(Graph.selectedDataChild[key] as ArrayCollection).removeItemAt(index);
+							}
+						}
+
+					}
+					
+					index= (Graph.selectedData as ArrayCollection).getItemIndex(nodeName);
+					(Graph.selectedData as ArrayCollection).removeItemAt(index);
+					this.vgraph.removeNode(_currentNode);
+					vgraph.draw();	
+									
+				}else{
+					mx.controls.Alert.show("this Node can not be edit, for it is not MashupNode!!");
+				}
+				}else{
+					mx.controls.Alert.show("No Node is selected!!,Please trace again");
+				}				
+			}
+		
+		  public     function idToName(vnode:IVisualNode):String{
+		  	          var dic1:Dictionary = Graph(vgraph.graph).getDic1();
+                       	var id:String = vnode.id.toString();
+            for (var key:String in dic1){
+            	if(id == dic1[key]){
+//            		mx.controls.Alert.show(" id:  "+ id + " name : "+key);
+            		break;
+            	}
+            }
+            return key;          
+		  }
+		]]>
+	</mx:Script>					
+
+	<!--mx:Style source="mashupBuild/styles/main.css" /-->
+	<!--mx:XML id="xmldata"/-->	
+
+	<mx:Panel id="main" name="main" title="Construction Panel" width="100%" height="100%" 
+		verticalAlign="middle" horizontalAlign="center" 
+		borderColor="#333333"  horizontalGap="5">
+		
+		<mx:Canvas id="graphCnvs" name="graphCnvs" width="100%" height="100%"   rollOver="roll_over(event)">
+			<ravis:VisualGraph id="vgraph" name="vgraph" width="100%" height="100%"
+				paddingBottom="5" left="0" right="0" top="0" bottom="0"
+				backgroundColor="#000000" alpha="0.8"
+				itemRenderer="mashupBuild.renderers.nodes.mxml.eventNodeRenderer"
+				edgeLabelRenderer="mashupBuild.renderers.edgelabels.mxml.shapeEdgeLabelRenderer"
+				visibilityLimitActive="true"
+			 >
+			</ravis:VisualGraph>	
+			<mx:VBox x="5" y="10" >
+				<mx:Label text="Node ID:" fontWeight="bold" styleName="labelStyle"/>
+				<mx:Label id="nodeID" text="" styleName="labelStyle" />
+				<mx:Label text="Node Name:" fontWeight="bold" styleName="labelStyle" />
+				<mx:Label id="nodeName" text=""  styleName="labelStyle"/>
+			</mx:VBox>						 
+			<mashupBuild:toolBar id="tpToolBar" name="tpToolBar" backgroundAlpha="0.5" visible="false"
+			 	rollOver="nodeRollToolBar(event)"  rollOut="nodeRollToolBar(event)" showMashupableAPI="showMashup()"
+			  	recommendation="Recomendation()" hideMashupableAPI="removeNode()" />
+			<!--controls:DegreesOfSeparation id="dosSlider" width="200" bottom="0" left="5" vgraph="{vgraph}" /-->
+			<!--mashupBuild:Controls id="Controls" width="400" bottom="0" left="5"  vgraph="{vgraph}" /-->     
+			                                  
+			<mashupBuild:buttonBar  id="buttonbar"  visible="false" width="400" height="30" right="5"  top="10" vgraph="{vgraph}"/>
+			 <mx:Button id="DownLoadUserManual" label="DownLoadUserManual" top="3" right="0" click="DownLoadManual()"/>
+			<mx:Button id="next" label="next" click="ChangeToEdit()" bottom="0" right="5"/>		
+			<mx:Button id="back" label="back"  visible="false" click="ComeBack()" bottom="0" right="5"/>
+		</mx:Canvas>
+	</mx:Panel>
+
+</mx:Canvas>
